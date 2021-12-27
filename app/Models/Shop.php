@@ -10,4 +10,18 @@ class Shop extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    // リレーション
+    public function erea(){
+        return $this->hasOne('App\Models\Erea');
+    }
+    public function genre(){
+        return $this->hasOne('App\Models\Genre');
+    }
+    public function favorites(){
+        return $this->hasMany('App\Models\Favorite');
+    }
+    public function reservations(){
+        return $this->hasMany('App\Models\Reservation');
+    }
 }

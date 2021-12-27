@@ -14,11 +14,11 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->id('shop_id');
+            $table->id();
             $table->string('shop_name',191);
             $table->text('overview');
-            $table->integer('erea_id')->comment('ereas-table');
-            $table->integer('genre_id')->comment('genres-table');
+            $table->foreignId('erea_id')->references('id')->on('ereas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('genre_id')->references('id')->on('genres')->onUpdate('cascade')->onDelete('cascade');
             $table->string('image',191);
             $table->timestamps();
             $table->softDeletes();

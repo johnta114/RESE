@@ -10,4 +10,9 @@ class Genre extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+       // リレーション
+    public function shop(){
+        return $this->belongsTo('App\Models\shop');
+    }
 }

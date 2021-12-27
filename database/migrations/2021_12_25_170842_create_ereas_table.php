@@ -14,8 +14,8 @@ class CreateEreasTable extends Migration
     public function up()
     {
         Schema::create('ereas', function (Blueprint $table) {
-            $table->id('erea_id');
-            $table->string('erea_name',191);
+            $table->id();
+            $table->string('erea_name',191)->comment('都道府県名');
             $table->timestamps();
             $table->softDeletes();
         });

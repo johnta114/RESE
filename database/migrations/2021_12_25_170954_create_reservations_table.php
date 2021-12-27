@@ -14,9 +14,9 @@ class CreateReservationsTable extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->id('reservation_id');
-            $table->integer('user_id')->comment('users-table');
-            $table->integer('shop_id')->comment('shops-table');
+            $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('shop_id')->references('id')->on('shops')->onUpdate('cascade')->onDelete('cascade');
             $table->date('reservation_date');
             $table->time('reservation_time');
             $table->unsignedTinyInteger('number_people');

@@ -10,4 +10,12 @@ class Favorite extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    // リレーション
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function shop(){
+        return $this->belongsTo('App\Models\shop');
+    }
 }
