@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
             GenresTableSeeder::class,
             ShopsTableSeeder::class,
             ]);
+
+            \App\Models\User::factory(10)->create();
+            \App\Models\Favorite::factory(10)->create();
+            \App\Models\Reservation::factory(10)->create();
     }
 }
