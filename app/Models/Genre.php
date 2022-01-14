@@ -11,8 +11,12 @@ class Genre extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'genre_name',
+    ];
        // リレーション
     public function shop(){
-        return $this->belongsTo('App\Models\shop');
+        return $this->hasOne('App\Models\shop');
     }
 }

@@ -11,8 +11,12 @@ class Erea extends Model
     use HasFactory;
     use SoftDeletes;
 
-           // リレーション
-        public function shop(){
-            return $this->belongsTo('App\Models\shop');
-        }
+    protected $fillable = [
+        'id',
+        'erea_name',
+    ];
+   // リレーション
+    public function shop(){
+        return $this->hasOne('App\Models\shop');
+    }
 }

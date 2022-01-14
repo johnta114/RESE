@@ -11,12 +11,17 @@ class Shop extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'shop_name',
+        'overview',
+    ];
+
     // リレーション
     public function erea(){
-        return $this->hasOne('App\Models\Erea');
+        return $this->belongsTo('App\Models\Erea');
     }
     public function genre(){
-        return $this->hasOne('App\Models\Genre');
+        return $this->belongsTo('App\Models\Genre');
     }
     public function favorites(){
         return $this->hasMany('App\Models\Favorite');
