@@ -1,8 +1,7 @@
 @extends('layouts.default')
-@section('content')
-<h1>home.blade.php</h1>
-
-<form action="/find" method="get">
+<!-- 検索 -->
+@section('search')
+<form action="/search" method="get">
     @csrf
     <input type="text" name="keyword" value="">
     <select name="erea">
@@ -19,7 +18,11 @@
     </select>
     <input class="button" type="submit" value="検索">
 </form>
+@endsection
 
+@section('content')
+<h1>home.blade.php</h1>
+<div>{{ Auth::id() }}</div>
 <table>
     <tr>
         <th>Data</th>
@@ -40,7 +43,25 @@
         <td>
             <a href="">詳しく見る</a>
         </td>
+        <td>
+        @auth
+            @if ($shop->is_favorited_by_auth_user())
+            <form action="/unlike" method="POST">
+                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                @csrf
+                <button type="submit">お気に入り解除</button>
+            </form>
+            @else
+            <form action="/like" method="POST">
+                @csrf
+                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                <button type="submit">お気に入り登録</button>
+            </form>
+            @endif
+        @endauth
+        </td>
     </tr>
+
 @endforeach
 </table>
 

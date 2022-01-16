@@ -13,9 +13,12 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// HomeController
 Route::get('/', [HomeController::class ,'home'] );
 Route::get('/search', [HomeController::class ,'search'] );
+Route::post('/like', [HomeController::class ,'like'] );
+Route::post('/unlike', [HomeController::class ,'unlike'] );
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

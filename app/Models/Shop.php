@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class Shop extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
+
     protected $fillable = [
+        'id',
         'shop_name',
         'overview',
     ];
@@ -29,4 +32,22 @@ class Shop extends Model
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
     }
+
+// お気に入り状況の確認
+    public function is_favorited_by_auth_user()
+    {
+        $id = Auth::id();
+
+        $favoriters = array();
+        foreach($this->favorites as $favorite) {
+            array_push($favoriters, $favorite->user_id);
+        }
+
+        if (in_array($id, $favoriters)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
