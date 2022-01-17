@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DitailController;
+use App\Http\Controllers\DoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,11 @@ Route::get('/search', [HomeController::class ,'search'] );
 Route::post('/like', [HomeController::class ,'like'] );
 Route::post('/unlike', [HomeController::class ,'unlike'] );
 
+// DitailController
+Route::get('/ditail', [DitailController::class ,'ditail'] );
+
+// DoneController
+Route::get('/done', [DoneController::class ,'done'] )->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

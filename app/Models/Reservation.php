@@ -11,6 +11,11 @@ class Reservation extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'reservation_date',
+        'reservation_time',
+        'number_people',
+    ];
        // リレーション
     public function user(){
         return $this->belongsTo('App\Models\User');

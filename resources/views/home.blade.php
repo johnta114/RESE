@@ -1,7 +1,7 @@
 @extends('layouts.default')
 <!-- 検索 -->
 @section('search')
-<form action="/search" method="get">
+<form action="/search" method="GET">
     @csrf
     <input type="text" name="keyword" value="">
     <select name="erea">
@@ -41,7 +41,11 @@
             {{$shop->genre->genre_name}}
         </td>
         <td>
-            <a href="">詳しく見る</a>
+            <form action="/ditail" method="GET">
+                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                @csrf
+                <button type="submit">詳しく見る</button>
+            </form>
         </td>
         <td>
         @auth

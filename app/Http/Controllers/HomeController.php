@@ -49,7 +49,7 @@ class HomeController extends Controller
 
         return view('home',$items);
     }
-// お気に入り
+// お気に入り登録
     public function like(Request $request)
     {
         $favorites = new Favorite;
@@ -58,7 +58,7 @@ class HomeController extends Controller
         $favorites->save();
         return back();
     }
-
+// お気に入り解除
     public function unlike(Request $request) {
         $user=Auth::user()->id;
         $favorites=Favorite::where('shop_id', $request->shop_id)->where('user_id', $user)->first();
