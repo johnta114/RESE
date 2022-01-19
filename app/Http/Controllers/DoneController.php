@@ -8,6 +8,7 @@ use Auth;
 
 class DoneController extends Controller
 {
+// 予約登録
     public function done(Request $request) {
         $inputs = $request->all();
         $reservations = new Reservation;

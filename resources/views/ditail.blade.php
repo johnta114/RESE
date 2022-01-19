@@ -13,7 +13,7 @@
         <td>{{$shop->overview}}</td>
     </tr>
     <div>予約</div>
-    <form action="/done" merhod="GET">
+    <form action="/done" merhod="POST">
         <input type="hidden" name="shop_id" value="{{$shop->id}}">
         <input type="date" name="reservation_date" required>
         <input type="time" name="reservation_time"  min="11:00" max="21:00" required>

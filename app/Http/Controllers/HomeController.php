@@ -60,8 +60,7 @@ class HomeController extends Controller
     }
 // お気に入り解除
     public function unlike(Request $request) {
-        $user=Auth::user()->id;
-        $favorites=Favorite::where('shop_id', $request->shop_id)->where('user_id', $user)->first();
+        $favorites=Favorite::where('shop_id', $request->shop_id)->where('user_id', Auth::user()->id)->first();
         $favorites->delete();
         return back();
     }

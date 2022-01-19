@@ -34,6 +34,7 @@
         </td>
         <td>
             <img src="{{$shop->image}}" alt="" class="w-8 h-4">
+        </td>
         <td>
             {{$shop->erea->erea_name}}
         </td>

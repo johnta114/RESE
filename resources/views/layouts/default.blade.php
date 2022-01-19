@@ -15,15 +15,22 @@
             <ul class="mt-20">
                 <li class="mb-10 text-3xl"><a class="text-blue-600" href="/">Home</a></li>
                 @auth
-                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="#">Logout</a></li>
-                    <li class="text-3xl"><a class="text-blue-600" href="#">Mypage</a></li>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <li class="mb-10 text-3xl">
+                        <a class="text-blue-600" href="/logout" onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
+                    </li>
+                </form>
+                <form method="POST" action="/mypage">
+                    @csrf
+                    <li class="text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">Mypage</a></li>
+                </form>
                 @endauth
                 @guest
-                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="#">Registration</a></li>
-                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="#">Login</a></li>
+                <li class="mb-10 text-3xl"><a class="text-blue-600" href="/register">Registration</a></li>
+                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="/login">Login</a></li>
                 @endguest
                 </ul>
-
         </nav>
         <div class="flex justify-between items-center">
             <div class="flex items-center">

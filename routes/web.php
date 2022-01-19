@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DitailController;
 use App\Http\Controllers\DoneController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,12 @@ Route::post('/unlike', [HomeController::class ,'unlike'] );
 Route::get('/ditail', [DitailController::class ,'ditail'] );
 
 // DoneController
-Route::get('/done', [DoneController::class ,'done'] )->middleware(['auth']);
+Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth']);
+
+// MypageController
+Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth']);
+Route::post('mypage/unlike', [MypageController::class ,'unlike']);
+Route::post('delete', [MypageController::class ,'reservationDelete'] );
 
 Route::get('/dashboard', function () {
     return view('dashboard');
