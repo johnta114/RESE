@@ -21,17 +21,4 @@
         @csrf
         <button type="submit">予約する</button>
     </form>
-    @auth
-    <div>予約一覧</div>
-    <table>
-        @foreach ($reservations as $reservation)
-        <tr>
-            <td>{{$reservation->shop->shop_name}}</td>
-            <td>{{$reservation->reservation_date}}</td>
-            <td>{{$reservation->reservation_time}}</td>
-            <td>{{$reservation->number_people}}</td>
-        </tr>
-        @endforeach
-    </table>
-    @endauth
 @endsection

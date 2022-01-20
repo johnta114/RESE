@@ -13,15 +13,7 @@ class DitailController extends Controller
     public function ditail(Request $request)
     {
         $shop = Shop::find($request->shop_id);
-    // 予約情報取得
-        $user=Auth::user()->id;
-        $reservations = Reservation::where('shop_id', $request->shop_id)->where('user_id', $user)->get();
 
-        $item=  [
-            'shop' => $shop,
-            'reservations' => $reservations
-        ];
-
-        return view('ditail',$item);
+        return view('ditail',['shop' => $shop]);
     }
 }
