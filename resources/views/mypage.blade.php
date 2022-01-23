@@ -1,14 +1,10 @@
 @extends('layouts.default')
 
-@section('header')
-    <div class="text-2xl font-bold"><i class="fas fa-user"></i>  {{Auth::user()->name}}  さん</div>
-@endsection
-
 @section('content')
 <div class="flex justify-center gap-8">
     <!-- 予約一覧 -->
     <div class="container w-96">
-        <h2 class="text-2xl font-bold mb-5">予約状況</h2>
+        <h2 class="text-2xl font-bold mb-5 text-center">予約状況</h2>
         @foreach ($reservations as $reservation)
         <div class="bg-blue-600 mb-5 px-5 py-3 rounded shadow-lg shadow-gray">
             <div class="flex justify-between items-center">
@@ -35,7 +31,7 @@
                 </tr>
                 <tr>
                     <th class="font-normal text-white pr-10">人数</th>
-                    <td class="font-normal text-white">{{$reservation->people_number}}人</td>
+                    <td class="font-normal text-white">{{$reservation->number_people}}人</td>
                 </tr>
             </table>
         </div>
@@ -43,7 +39,7 @@
     </div>
         <!-- お気に入り一覧 -->
     <div class="container w-1/2">
-        <h2 class="text-2xl font-bold mb-5">お気に入り一覧</h2>
+        <h2 class="text-2xl font-bold mb-5 text-center">お気に入り一覧</h2>
         <div class="flex flex-wrap justify-center items-center gap-5">
             @foreach ($favorites as $favorite)
             <div class="w-56 gap-1 rounded-xl bg-white shadow-lg shadow-gray">

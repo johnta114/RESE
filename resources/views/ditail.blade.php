@@ -19,20 +19,14 @@
         <h2 class="text-3xl font-bold text-white my-5">予約</h2>
         <form action="/done" method="POST">
             <input type="hidden" name="shop_id" value="{{$shop->id}}">
-            <!-- datepikker -->
             <div class="flex items-center justify-center w-full">
-                <div class="datepicker mb-3 w-3/4" data-mdb-toggle-button="false">
-                    <input id="datepicker" type="text" name="reservation_date" required
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black"
-                    placeholder="来店日" data-mdb-toggle="datepicker" />
+                <div class="mb-3 w-3/4">
+                    <input  type="date" name="reservation_date" required class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店日"/>
                 </div>
             </div>
-            <!-- timepicker -->
             <div class="flex justify-center w-full">
-                <div class="timepicker mb-3 w-3/4" data-mdb-with-icon="false" id="input-toggle-timepicker">
-                    <input type="text" name="reservation_time"  min="11:00" max="21:00" required
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black"
-                    placeholder="来店時間" data-mdb-toggle="input-toggle-timepicker" />
+                <div class="mb-3 w-3/4">
+                    <input type="time" name="reservation_time"  min="11:00" max="21:00" required class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店時間"/>
                 </div>
             </div>
             <div class="flex justify-center w-full">
