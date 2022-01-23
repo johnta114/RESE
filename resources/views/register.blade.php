@@ -3,9 +3,9 @@
 @section('content')
 <form method="POST" action="/register">
     @csrf
-    <div class="mx-auto w-96 h-80 rounded bg-white shadow-lg shadow-gray flex justify-center items-center">
+    <div class="mx-auto w-96 rounded bg-white shadow-lg shadow-gray flex justify-center items-center">
         <div class="w-10/12 mx-auto">
-            <h2 class="text-lg text-center">会員登録</h2>
+            <h2 class="text-lg text-center py-4">会員登録</h2>
             <!-- Name -->
             <div class="mb-3 w-full flex justify-between items-center">
                 <i class="fas fa-user pr-5"></i>
@@ -26,7 +26,7 @@
                 <i class="fas fa-lock pr-5"></i>
                 <input id="password_confirmation" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="パスワード確認" type="password" name="password_confirmation" required />
             </div>
-            <div class="text-right">
+            <div class="text-right mb-4">
                 <button type="submit" class="text-xs text-white bg-blue-600 rounded-md py-1.5 px-3 ">登録</button>
             </div>
         </div>
