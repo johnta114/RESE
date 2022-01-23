@@ -1,32 +1,29 @@
 @extends('layouts.default')
 <!-- 検索 -->
-@section('search')
-<form action="/search" method="GET">
+@section('header')
+<form class="flex" action="/search" method="GET">
     @csrf
-    <input type="text" name="keyword" value="">
-    <select name="erea">
-        <option hidden></option>
+    <input class="placeholder-black form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" name="keyword" value="" placeholder="検索ワード">
+    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="erea" >
+        <option value="">全ての地域</option>
     @foreach ($ereas as $erea)
         <option value="{{$erea->id}}">{{$erea->erea_name}}</option>
     @endforeach
     </select>
-    <select name="genre">
-        <option hidden></option>
+    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="genre">
+        <option hidden value="">全てのジャンル</option>
     @foreach ($genres as $genre)
         <option value="{{$genre->id}}">{{$genre->genre_name}}</option>
     @endforeach
     </select>
-    <input class="button" type="submit" value="検索">
+    <input class="btn  px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" value="検索">
 </form>
 @endsection
 
 @section('content')
-<h1>home.blade.php</h1>
-<div>{{ Auth::id() }}</div>
-
-<div class="w-full mx-auto flex flex-wrap justify-between items-center gap-5">
+<div class="w-full mx-auto flex flex-wrap justify-center items-center gap-5">
 @foreach ($shops as $shop)
-    <div class="w-52 mx-0.5 mb-10 rounded-xl bg-white shadow-lg shadow-gray">
+    <div class="w-56 gap-1 rounded-xl bg-white shadow-lg shadow-gray">
         <div class="w-full rounded-t-xl">
             <img src="{{$shop->image}}" alt="お店の画像" class="w-full rounded-t-xl">
         </div>

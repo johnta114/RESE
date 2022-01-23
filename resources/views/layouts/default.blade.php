@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/64fa18308f.js" crossorigin="anonymous"></script>
 </head>
-<body class="max-w-6xl bg-gray-200 px-5 py-14 m-auto">
+<body class=" bg-gray-200 px-5 py-14 m-auto">
 <!-- header -->
 <header>
-    <div class="container mb-10">
+    <div class="container mb-10 ml-10">
         <nav id="nav" class="absolute w-full h-screen -left-full bg-gray-200 text-center duration-700">
             <ul class="mt-20">
                 <li class="mb-10 text-3xl"><a class="text-blue-600" href="/">Home</a></li>
@@ -43,7 +45,7 @@
                 <h1 class="text-5xl font-bold ml-4 text-blue-600 cursor-pointer"><a href="/">Rese</a></h1>
             </div>
             <div>
-                @yield('search')
+                @yield('header')
             </div>
         </div>
     </div>
@@ -52,5 +54,11 @@
         @yield('content')
     </div>
 <script src="{{ asset('/js/common.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script>
+    $('#datepicker').datepicker({
+        format: 'yyyy/mm/dd'
+    });
+</script>
 </body>
 </html>

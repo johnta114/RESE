@@ -1,24 +1,58 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>ditail.blade.php</h1>
-<div>{{ Auth::id() }}</div>
-
-<table>
-    <tr>
-        <td>{{$shop->shop_name}}</td>
-        <td><img src="{{$shop->image}}" alt="" class="w-8 h-4"></td>
-        <td>{{$shop->erea->erea_name}}</td>
-        <td>{{$shop->genre->genre_name}}</td>
-        <td>{{$shop->overview}}</td>
-    </tr>
-    <div>予約</div>
-    <form action="/done" merhod="POST">
-        <input type="hidden" name="shop_id" value="{{$shop->id}}">
-        <input type="date" name="reservation_date" required>
-        <input type="time" name="reservation_time"  min="11:00" max="21:00" required>
-        <input type="number" name="number_people" min="1" max="8" required>
-        @csrf
-        <button type="submit">予約する</button>
-    </form>
+<div class="flex justify-center items-center gap-10">
+    <!-- 店舗情報 -->
+    <div class="container w-5/12">
+        <h2 class="text-3xl font-bold mb-5">{{$shop->shop_name}}</h2>
+        <div class="w-ful mb-5">
+            <img class="w-full" src="{{$shop->image}}" alt="店舗画像">
+        </div>
+        <div class="flex items-center mb-5">
+            <p class="text-base mr-5">#{{$shop->erea->erea_name}}</p>
+            <p class="text-base">#{{$shop->genre->genre_name}}</p>
+        </div>
+        <p class="text-lg">{{$shop->overview}}</p>
+    </div>
+    <!-- 予約情報 -->
+    <div class="w-5/12 text-center bg-blue-600 rounded">
+        <h2 class="text-3xl font-bold text-white my-5">予約</h2>
+        <form action="/done" method="POST">
+            <input type="hidden" name="shop_id" value="{{$shop->id}}">
+            <!-- datepikker -->
+            <div class="flex items-center justify-center w-full">
+                <div class="datepicker mb-3 w-3/4" data-mdb-toggle-button="false">
+                    <input id="datepicker" type="text" name="reservation_date" required
+                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black"
+                    placeholder="来店日" data-mdb-toggle="datepicker" />
+                </div>
+            </div>
+            <!-- timepicker -->
+            <div class="flex justify-center w-full">
+                <div class="timepicker mb-3 w-3/4" data-mdb-with-icon="false" id="input-toggle-timepicker">
+                    <input type="text" name="reservation_time"  min="11:00" max="21:00" required
+                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black"
+                    placeholder="来店時間" data-mdb-toggle="input-toggle-timepicker" />
+                </div>
+            </div>
+            <div class="flex justify-center w-full">
+                <div class="mb-5 w-3/4">
+                    <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" name="number_people" required>
+                        <option hidden selected >来店人数</option>
+                        <option value="1">1人</option>
+                        <option value="2">2人</option>
+                        <option value="3">3人</option>
+                        <option value="4">4人</option>
+                        <option value="5">5人</option>
+                        <option value="6">6人</option>
+                        <option value="7">7人</option>
+                        <option value="8">8人</option>
+                    </select>
+                </div>
+            </div>
+            @csrf
+            <button type="submit" class="w-full h-9 px-6 py-2.5 bg-blue-900 text-white font-medium text-xs leading-tight uppercase rounded-b shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">予約する</button>
+        </form>
+    </div>
+</div>
 @endsection
