@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DitailController;
 use App\Http\Controllers\DoneController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\ThanksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::get('/', [HomeController::class ,'home'] );
 Route::get('/search', [HomeController::class ,'search'] );
 Route::post('/like', [HomeController::class ,'like'] );
 Route::post('/unlike', [HomeController::class ,'unlike'] );
+
+// ThanksController
+Route::get('/thanks', [ThanksController::class ,'thanks'] );
 
 // DitailController
 Route::get('/ditail', [DitailController::class ,'ditail'] );
