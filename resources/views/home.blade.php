@@ -3,14 +3,14 @@
 @section('header')
 <form class="flex" action="/search" method="GET">
     @csrf
-    <input class="placeholder-black form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" name="keyword" value="" placeholder="検索ワード">
-    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="erea" >
+    <input class="placeholder-black form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" name="keyword" value="{{old('keyword')}}" placeholder="検索ワード">
+    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="erea" value="{{old('erea')}}">
         <option value="">全ての地域</option>
     @foreach ($ereas as $erea)
         <option value="{{$erea->id}}">{{$erea->erea_name}}</option>
     @endforeach
     </select>
-    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="genre">
+    <select class="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="genre" value="{{old('genre')}}">
         <option hidden value="">全てのジャンル</option>
     @foreach ($genres as $genre)
         <option value="{{$genre->id}}">{{$genre->genre_name}}</option>

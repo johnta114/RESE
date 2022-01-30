@@ -9,18 +9,27 @@
             <!-- Name -->
             <div class="mb-3 w-full flex justify-between items-center">
                 <i class="fas fa-user pr-5"></i>
-                <input id="name" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="お名前" type="text" name="name" :value="old('name')" required autofocus />
+                <input id="name" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="お名前" type="text" name="name" value="{{old('name')}}" required autofocus />
             </div>
             <!-- Email Address -->
+            @error('name')
+            <div class="text-red-500 text-sm">{{$message}}</div>
+            @enderror
             <div class="mb-3 w-full flex justify-between items-center">
                 <i class="far fa-envelope  pr-5"></i>
-                <input id="email" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="メールアドレス" type="email" name="email" :value="old('email')" required />
+                <input id="email" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="メールアドレス" type="email" name="email" value="{{old('email')}}" required />
             </div>
+            @error('email')
+            <div class="text-red-500 text-sm">{{$message}}</div>
+            @enderror
             <!-- パスワード -->
             <div class="mb-3 w-full flex justify-between items-center">
                 <i class="fas fa-lock pr-5"></i>
                 <input id="password" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="パスワード" type="password" name="password" required autocomplete="new-password" />
             </div>
+            @error('password')
+            <div class="text-red-500 text-sm">{{$message}}</div>
+            @enderror
             <!-- パスワード確認 -->
             <div class="mb-3 w-full flex justify-between items-center">
                 <i class="fas fa-lock pr-5"></i>

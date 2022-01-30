@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
 use Auth;
+use App\Http\Requests\ReservationRequest;
 
 class DoneController extends Controller
 {
 // 予約登録
-    public function done(Request $request) {
+    public function done(ReservationRequest $request) {
         $inputs = $request->all();
         $reservations = new Reservation;
         $reservations->user_id = Auth::user()->id;

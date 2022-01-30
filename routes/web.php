@@ -23,9 +23,6 @@ Route::get('/search', [HomeController::class ,'search'] );
 Route::post('/like', [HomeController::class ,'like'] );
 Route::post('/unlike', [HomeController::class ,'unlike'] );
 
-// ThanksController
-Route::get('/thanks', [ThanksController::class ,'thanks'] );
-
 // DitailController
 Route::get('/ditail', [DitailController::class ,'ditail'] );
 

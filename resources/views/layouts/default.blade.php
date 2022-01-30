@@ -9,6 +9,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/64fa18308f.js" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- jQuery-datetimepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
+
 
 </head>
 <body class=" bg-gray-200 px-5 py-14 m-auto">
@@ -60,4 +66,24 @@
     </div>
 <script src="{{ asset('/js/common.js') }}"></script>
 </body>
+<script>
+$(function() {
+    $.datetimepicker.setLocale('ja'); // 日本語化
+    $('#datepicker').datetimepicker({
+        timepicker:false, // 日付のみ表示
+        format:'Y/m/d', // フォーマットの指定。オプションはカンマ区切りで複数指定可能
+        minDate:0,//昨日までの日付選択不可
+        maxDate:'+1970/02/01'
+    });
+    $('#timepicker').datetimepicker({
+        datepicker:false, // 時間のみ表示
+        step:30, // 10分刻み
+        format:'H:i', // フォーマットの指定。オプションはカンマ区切りで複数指定可能
+        minTime:'6:00',//最小時間
+        maxTime:'21:30',//最大時間
+    });
+});
+
+</script>
+
 </html>
