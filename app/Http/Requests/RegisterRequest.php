@@ -39,7 +39,7 @@ class RegisterRequest extends FormRequest
             'email.max' => 'メールアドレスは191文字以下で入力してください',
             'email.unique' => 'このメールアドレスは既に登録されています',
             'password.required' => 'パスワードを入力してください',
-            'password.between:8,191' => 'パスワードは8文字以上191文字以下で入力してください',
+            'password.between' => 'パスワードは8文字以上191文字以下で入力してください',
             'password.confirmed' => 'パスワードが一致しません',
         ];
     }

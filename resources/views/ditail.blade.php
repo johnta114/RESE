@@ -1,9 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="flex justify-center items-center gap-10">
+<div class="w-full justify-center items-center gap-12 md:flex">
     <!-- 店舗情報 -->
-    <div class="container w-5/12">
+    <div class="w-full mb-10">
         <h2 class="text-3xl font-bold mb-5">{{$shop->shop_name}}</h2>
         <div class="w-ful mb-5">
             <img class="w-full" src="{{$shop->image}}" alt="店舗画像">
@@ -15,14 +15,14 @@
         <p class="text-lg">{{$shop->overview}}</p>
     </div>
     <!-- 予約情報 -->
-    <div class="w-5/12 text-center bg-blue-600 rounded">
-        <h2 class="text-3xl font-bold text-white my-5">予約</h2>
+    <div class="w-full text-center bg-white rounded shadow">
+        <h2 class="text-3xl font-bold text-black py-5">予約</h2>
         <form action="/done" method="POST">
             <input type="hidden" name="shop_id" value="{{$shop->id}}">
             <!-- datepicker -->
             <div class="flex items-center justify-center w-full">
                 <div class="mb-3 w-3/4">
-                    <input type="text" name="reservation_date" required  class=" datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店日"/>
+                    <input type="text" name="reservation_date" required  class="datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店日"/>
                     @error('reservation_date')
                     <div class="text-red-500 text-sm">{{$message}}</div>
                     @enderror
@@ -53,7 +53,7 @@
                 </div>
             </div>
             @csrf
-            <button type="submit" class="w-full h-9 px-6 py-2.5 bg-blue-900 text-white font-medium text-xs leading-tight uppercase rounded-b shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">予約する</button>
+            <button type="submit" class="px-6 py-2.5 mb-4 bg-blue-600 text-white text-xl rounded cursor-pointer hover:bg-blue-800">予約する</button>
         </form>
     </div>
 </div>
