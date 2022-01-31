@@ -18,7 +18,7 @@ class ShopsTableSeeder extends Seeder
         [
             'shop_name' => '牛助',
             'erea_id' => 264,
-            'genre_id' => 12,
+            'genre_id' => 14,
             'overview' => '焼肉業界で20年間経験を積み、肉を熟知したマスターによる実力派焼肉店。長年の実績とお付き合いをもとに、なかなか食べられない希少部位も仕入れております。また、ゆったりとくつろげる空間はお仕事終わりの一杯や女子会にぴったりです。',
             'image' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg'
         ],
