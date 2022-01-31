@@ -42,10 +42,9 @@ class MypageController extends Controller
     // 予約削除
     public function reservationDelete(Request $request){
         $delete = Reservation::where('id', $request->reservation_id)->where('created_at',$request->created_at)->first();
-        // dd($delete);
         $delete -> delete();
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
 
         $items = [
             'favorites' => $favorites,
@@ -53,4 +52,20 @@ class MypageController extends Controller
         ];
         return view('mypage',$items);
     }
+    // 予約変更
+    public function reservationUpdate(Request $request){
+
+        $update = $request->all();
+        unset($update['_token']);
+        Reservation::where('id', $request->id)->update($update);
+
+        $favorites = Favorite::where('user_id', Auth::user()->id)->get();
+        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        $items = [
+            'favorites' => $favorites,
+            'reservations' => $reservations,
+        ];
+        return view('mypage',$items);
+    }
+    
 }

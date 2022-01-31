@@ -69,13 +69,13 @@
 <script>
 $(function() {
     $.datetimepicker.setLocale('ja'); // 日本語化
-    $('#datepicker').datetimepicker({
+    $('.datepicker').datetimepicker({
         timepicker:false, // 日付のみ表示
-        format:'Y/m/d', // フォーマットの指定。オプションはカンマ区切りで複数指定可能
+        format:'Y-m-d', // フォーマットの指定。オプションはカンマ区切りで複数指定可能
         minDate:0,//昨日までの日付選択不可
         maxDate:'+1970/02/01'
     });
-    $('#timepicker').datetimepicker({
+    $('.timepicker').datetimepicker({
         datepicker:false, // 時間のみ表示
         step:30, // 10分刻み
         format:'H:i', // フォーマットの指定。オプションはカンマ区切りで複数指定可能

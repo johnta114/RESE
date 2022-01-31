@@ -33,6 +33,7 @@ Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth']);
 Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth']);
 Route::post('mypage/unlike', [MypageController::class ,'unlike']);
 Route::post('delete', [MypageController::class ,'reservationDelete'] );
+Route::post('update', [MypageController::class ,'reservationUpdate'] );
 
 Route::get('/dashboard', function () {
     return view('dashboard');

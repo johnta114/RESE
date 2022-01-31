@@ -22,7 +22,7 @@
             <!-- datepicker -->
             <div class="flex items-center justify-center w-full">
                 <div class="mb-3 w-3/4">
-                    <input id="datepicker" type="text" name="reservation_date" required  class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店日"/>
+                    <input type="text" name="reservation_date" required  class=" datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店日"/>
                     @error('reservation_date')
                     <div class="text-red-500 text-sm">{{$message}}</div>
                     @enderror
@@ -31,7 +31,7 @@
             <!-- timepicker -->
             <div class="flex justify-center w-full">
                 <div class="mb-3 w-3/4">
-                    <input id="timepicker" type="text"  name="reservation_time" required class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店時間"/>
+                    <input type="text"  name="reservation_time" required class="timepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="来店時間"/>
                     @error('reservation_time')
                     <div class="text-red-500 text-sm">{{$message}}</div>
                     @enderror
