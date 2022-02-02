@@ -2,7 +2,6 @@
 
 @section('content')
 <form method="POST" action="/register">
-    @csrf
     <div class="mx-auto md:w-96 rounded bg-white shadow-lg shadow-gray flex justify-center items-center">
         <div class="w-10/12 mx-auto">
             <h2 class="text-lg text-center py-4">会員登録</h2>
@@ -36,11 +35,12 @@
             <div class="text-red-500 text-sm">{{$message}}</div>
             @enderror
             <div class="text-right mb-2">
+                @csrf
                 <button type="submit" class="text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5 ">登録</button>
             </div>
-            <div class="ml-2 mb-4">
+            <!-- <div class="ml-2 mb-4">
                 <a href="/login" class="text-sm border-b border-black text-black hover:text-gray-600 hover:border-gray-600 cursor-pointer">会員登録をしている方</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </form>

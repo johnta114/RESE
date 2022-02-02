@@ -51,6 +51,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return view('thanks');
+        return redirect()->route('thanks');
     }
 }

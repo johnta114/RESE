@@ -23,6 +23,9 @@ Route::get('/search', [HomeController::class ,'search'] );
 Route::post('/like', [HomeController::class ,'like'] );
 Route::post('/unlike', [HomeController::class ,'unlike'] );
 
+// ThanksController
+Route::get('/thanks', [thanksController::class ,'thanks'] )->middleware(['verified'])->name('thanks');
+
 // DitailController
 Route::get('/ditail', [DitailController::class ,'ditail'] );
 
@@ -35,8 +38,9 @@ Route::post('mypage/unlike', [MypageController::class ,'unlike']);
 Route::post('delete', [MypageController::class ,'reservationDelete'] );
 Route::post('update', [MypageController::class ,'reservationUpdate'] );
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
