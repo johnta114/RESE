@@ -19,7 +19,6 @@ class MypageController extends Controller
             'favorites' => $favorites,
             'reservations' => $reservations,
         ];
-
         return view('mypage',$items);
     }
 
@@ -52,20 +51,4 @@ class MypageController extends Controller
         ];
         return view('mypage',$items);
     }
-    // 予約変更
-    public function reservationUpdate(Request $request){
-
-        $update = $request->all();
-        unset($update['_token']);
-        Reservation::where('id', $request->id)->update($update);
-
-        $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
-        $items = [
-            'favorites' => $favorites,
-            'reservations' => $reservations,
-        ];
-        return view('mypage',$items);
-    }
-    
 }

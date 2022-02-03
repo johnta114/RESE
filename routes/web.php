@@ -6,6 +6,7 @@ use App\Http\Controllers\DitailController;
 use App\Http\Controllers\DoneController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ThanksController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,12 @@ Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth']);
 
 // MypageController
 Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth']);
-Route::post('mypage/unlike', [MypageController::class ,'unlike']);
-Route::post('delete', [MypageController::class ,'reservationDelete'] );
-Route::post('update', [MypageController::class ,'reservationUpdate'] );
+Route::post('/mypage/unlike', [MypageController::class ,'unlike']);
+Route::post('/delete', [MypageController::class ,'reservationDelete'] );
+
+// ReservationController
+Route::post('/reservation', [ReservationController::class ,'reservation'] );
+Route::post('/reservation/update', [ReservationController::class ,'update'] );
 
 
 Route::get('/dashboard', function () {
