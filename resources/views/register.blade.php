@@ -36,11 +36,11 @@
             @enderror
             <div class="text-right mb-2">
                 @csrf
-                <button type="submit" class="text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5 ">登録</button>
+                <button type="submit" class="w-full md:w-auto text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5">登録</button>
             </div>
-            <!-- <div class="ml-2 mb-4">
+            <div class="ml-2 mb-4">
                 <a href="/login" class="text-sm border-b border-black text-black hover:text-gray-600 hover:border-gray-600 cursor-pointer">会員登録をしている方</a>
-            </div> -->
+            </div>
         </div>
     </div>
 </form>

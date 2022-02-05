@@ -3,21 +3,21 @@
 @section('header')
 <form class="md:flex md:text-right gap-2 items-center mt-3" action="/search" method="GET">
     @csrf
-    <input class="placeholder-black block w-full px-3 py-1.5 mb-3 text-base text-black bg-white border border-solid border-gray-300 rounded " type="text" name="keyword" value="{{old('keyword')}}" placeholder="検索ワード">
-    <select class="block w-full px-3 py-1.5 mb-3 text-base text-black bg-white border border-solid border-gray-300 rounded" name="erea">
+    <input class="placeholder-black block w-full px-3 py-2 mb-3 md:mb-0 text-base text-black bg-white border border-solid border-gray-300 rounded " type="text" name="keyword" value="{{old('keyword')}}" placeholder="検索ワード">
+    <select class="block w-full px-3 py-2.5 mb-3 md:mb-0 text-base text-black bg-white border border-solid border-gray-300 rounded cursor-pointer" name="erea">
         <option value="">全ての地域</option>
     @foreach ($ereas as $erea)
         <option value="{{$erea->id}}">{{$erea->erea_name}}</option>
     @endforeach
     </select>
-    <select class="block w-full px-3 py-1.5 mb-3 text-base text-black bg-white border border-solid border-gray-300 rounded" name="genre">
+    <select class="block w-full px-3 py-2.5 mb-3 md:mb-0 text-base text-black bg-white border border-solid border-gray-300 rounded cursor-pointer" name="genre">
         <option value="">全てのジャンル</option>
     @foreach ($genres as $genre)
         <option value="{{$genre->id}}">{{$genre->genre_name}}</option>
     @endforeach
     </select>
-    <div class="text-right">
-        <input class="inline-block px-6 py-2.5 bg-blue-600 text-white text-xs rounded shadow-md hover:bg-blue-800 cursor-pointer" type="submit" value="検索">
+    <div class="text-right w-full md:w-auto">
+        <input class="blok w-full md:w-auto px-6 py-2.5 bg-blue-600 text-white text-sm rounded shadow-md hover:bg-blue-800 cursor-pointer" type="submit" value="検索">
     </div>
 </form>
 @endsection
@@ -25,7 +25,7 @@
 @section('content')
 <div class="w-full mx-auto flex flex-wrap justify-center items-center gap-5">
 @foreach ($shops as $shop)
-    <div class="w-10/12 md:w-56 gap-1 rounded-xl bg-white shadow-lg shadow-gray">
+    <div class="w-full md:w-56 gap-1 rounded-xl bg-white shadow-lg shadow-gray">
         <div class="w-full rounded-t-xl">
             <img src="{{$shop->image}}" alt="お店の画像" class="w-full rounded-t-xl">
         </div>
@@ -64,4 +64,5 @@
         </div>
     </div>
 @endforeach
+<button class="fixed right-5 bottom-5 opacity-80 w-12 h-12 rounded-full border-none cursor-pointer bg-gray-400" id="button">↑</button>
 @endsection

@@ -46,7 +46,7 @@
         @endforeach
     </div>
         <!-- お気に入り一覧 -->
-    <div class="w-4/5 md:w-5/12 bg-slate-300 h-auto mx-auto py-4 rounded">
+    <div class="md:w-5/12 w-4/5 bg-slate-300 mx-auto h-auto py-4 mb-5 rounded">
         <h2 class="text-2xl font-bold mb-5 text-center">お気に入り一覧</h2>
         <div class="md:flex flex-wrap justify-center items-center">
             @foreach ($favorites as $favorite)

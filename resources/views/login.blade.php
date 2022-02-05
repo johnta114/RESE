@@ -19,7 +19,7 @@
                 <input id="password" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black" placeholder="パスワード" type="password" name="password" required autocomplete="current-password" />
             </div>
             <div class="text-right mb-2">
-                <button class="text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5">ログイン</button>
+                <button class="w-full md:w-auto text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5">ログイン</button>
             </div>
             <div class="ml-2 mb-4">
                 <a href="/register" class="text-sm border-b border-black text-black hover:text-gray-600 hover:border-gray-600">会員登録をしていない方</a>

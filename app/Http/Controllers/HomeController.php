@@ -34,12 +34,24 @@ class HomeController extends Controller
     public function search(Request $request){
         $ereas = Erea::all();
         $genres = Genre::all();
+
+        $search1 = $request->input('keyword');
+        $search2 = $request->input('erea');
+        $search3 = $request->input('genre');
+
         // クエリ発行
         $query = Shop::query();
-        $shops = $query->where('shop_name', 'LIKE',"%{$request->input('keyword')}%")
-        ->where('erea_id', 'LIKE',"%{$request->input('erea')}%")
-        ->where('genre_id', 'LIKE',"%{$request->input('genre')}%")
-        ->get();
+        
+        if($search2 == null && $search3 == null) {
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->get();
+        }elseif($search2 == null){
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%") -> where('genre_id', $search3)->get();
+        }elseif($search3 == null){
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('erea_id', $search2)->get();
+        }else{
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('genre_id', $search3)->where('erea_id', $search2)->get();
+        }
+
 
         $items =[
             'ereas' => $ereas,
