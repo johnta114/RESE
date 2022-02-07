@@ -65,4 +65,5 @@
     </div>
 @endforeach
 <button class="fixed right-5 bottom-5 opacity-80 w-12 h-12 rounded-full border-none cursor-pointer bg-gray-400" id="button">↑</button>
+<script src="{{ asset('/js/home.js') }}"></script>
 @endsection

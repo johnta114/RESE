@@ -10,7 +10,7 @@ class ReservationController extends Controller
 {
     // 一覧表示
     public function reservation(Request $request){
-        $reservation = Reservation::where('id', $request->reservation_id)->where('created_at',$request->created_at)->first();
+        $reservation = Reservation::where('id', $request->reservation_id)->first();
         return view('reservation',['reservation' => $reservation]);
     }
 
@@ -21,13 +21,8 @@ class ReservationController extends Controller
         unset($update['_token']);
         Reservation::where('id', $request->id)->update($update);
 
-        $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
-        $items = [
-            'favorites' => $favorites,
-            'reservations' => $reservations,
-        ];
-        return view('mypage',$items);
+        $reservation = Reservation::where('id', $request->id)->first();
+        return view('reservation-update',['reservation' => $reservation]);
     }
 
 }

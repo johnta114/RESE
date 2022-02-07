@@ -21,8 +21,8 @@ use App\Http\Controllers\ReservationController;
 // HomeController
 Route::get('/', [HomeController::class ,'home'] );
 Route::get('/search', [HomeController::class ,'search'] );
-Route::post('/like', [HomeController::class ,'like'] );
-Route::post('/unlike', [HomeController::class ,'unlike'] );
+Route::post('/like', [HomeController::class ,'like'] )->middleware(['auth','verified']);
+Route::post('/unlike', [HomeController::class ,'unlike'] )->middleware(['auth','verified']);
 
 // ThanksController
 Route::get('/thanks', [thanksController::class ,'thanks'] )->middleware(['verified'])->name('thanks');
@@ -31,12 +31,12 @@ Route::get('/thanks', [thanksController::class ,'thanks'] )->middleware(['verifi
 Route::get('/ditail', [DitailController::class ,'ditail'] );
 
 // DoneController
-Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth']);
+Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth','verified']);
 
 // MypageController
-Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth']);
-Route::post('/mypage/unlike', [MypageController::class ,'unlike']);
-Route::post('/delete', [MypageController::class ,'reservationDelete'] );
+Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth','verified']);
+Route::post('/mypage/unlike', [MypageController::class ,'unlike'])->middleware(['auth','verified']);
+Route::post('/delete', [MypageController::class ,'reservationDelete'] )->middleware(['auth','verified']);
 
 // ReservationController
 Route::post('/reservation', [ReservationController::class ,'reservation'] );

@@ -57,4 +57,5 @@
         </form>
     </div>
 </div>
+<script src="{{ asset('/js/datetime.js') }}"></script>
 @endsection

@@ -9,7 +9,7 @@
         <div class="bg-blue-600 w-4/5 mb-5 mx-auto p-5 rounded shadow-md shadow-gray-500">
             <div class="flex justify-between items-center">
                 <i class="far fa-clock text-white"></i>
-                <form action="delete" method="POST">
+                <form action="/delete" method="POST">
                     <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                     <input type="hidden" name="created_at" value="{{$reservation->created_at}}">
                     @csrf
@@ -35,7 +35,7 @@
                 </tr>
             </table>
             <div class="text-right">
-                <form action="reservation" method="POST">
+                <form action="/reservation" method="POST">
                     <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                     <input type="hidden" name="created_at" value="{{$reservation->created_at}}">
                     @csrf

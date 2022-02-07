@@ -21,8 +21,11 @@
             <div class="text-right mb-2">
                 <button class="w-full md:w-auto text-base text-white bg-blue-600 hover:bg-blue-800 cursor-pointer rounded-md py-2 px-5">ログイン</button>
             </div>
-            <div class="ml-2 mb-4">
+        </form>
+            <div class="ml-2 mb-2">
                 <a href="/register" class="text-sm border-b border-black text-black hover:text-gray-600 hover:border-gray-600">会員登録をしていない方</a>
             </div>
-        </form>
+            <div class="ml-2 mb-4">
+                <a href="{{ route('password.request') }}" class="text-sm border-b border-black text-black hover:text-gray-600 hover:border-gray-600">パスワードを忘れた方</a>
+            </div>
 @endsection

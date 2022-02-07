@@ -1,11 +1,15 @@
 @extends('layouts.default')
 
 @section('content')
+<h2 class="text-center text-2xl mb-5 font-bold">予約変更</h2>
 <div class="bg-blue-600 w-96 mb-5 mx-auto p-5 rounded shadow-md shadow-gray-500">
-            <div class="mb-2">
-                <i class="far fa-clock text-white"></i>
-            </div>
-            <table>
+        <div class="mb-2">
+            <i class="far fa-clock text-white"></i>
+        </div>
+        <form action="/reservation/update" method="POST">
+            @csrf
+            <input type="hidden" name="id" value="{{$reservation->id}}">
+            <table class="mx-auto mb-5">
                 <tr>
                     <th class="font-normal text-white pr-10">店名</th>
                     <td class="font-normal text-white">{{$reservation->shop->shop_name}}</td>
@@ -13,13 +17,13 @@
                 <tr>
                     <th class="font-normal text-white pr-10">日付</th>
                     <td>
-                        <input type="text" class="datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " value="{{$reservation->reservation_date}}">
+                        <input type="text" class="datepicker form-control block w-full px-3 py-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " value="{{$reservation->reservation_date}}">
                     </td>
                 </tr>
                 <tr>
                     <th class="font-normal text-white pr-10">時間</th>
                     <td>
-                        <input type="text"  name="reservation_time" required class="timepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{$reservation->reservation_time}}">
+                        <input type="text" name="reservation_time" required class="timepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{$reservation->reservation_time}}">
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +44,8 @@
                 </tr>
             </table>
             <div class="text-right">
-                <a href="" class="text-xs tect-white bg-blue-500 text-white py-1.5 px-3 rounded">予約変更</a>
+                <button type="submit" class="px-3 py-1.5 mb-4 text-blue-600 bg-white text-base rounded cursor-pointer hover:bg-gray-400">変更する</button>
             </div>
-        </div>
+        </form>
+    </div>
 @endsection
