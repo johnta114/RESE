@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminUserDitailController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\OwnerShopController;
 use App\Http\Controllers\OwnerShopRegisterController;
+use App\Http\Controllers\OwnerShopDitailController;
 
 
 
@@ -60,11 +61,16 @@ Route::post('/admin/user/update', [AdminUserDitailController::class ,'update'] )
 Route::post('/admin/user/delete', [AdminUserDitailController::class ,'delete'] )->middleware(['auth','can:isAdmin']);
 
 // OwnerController
-Route::post('/owner', [OwnerController::class ,'owner'] )->middleware(['can:isOwner']);
+Route::post('/owner', [OwnerController::class ,'owner'] )->middleware(['auth','can:isOwner']);
 // OwnerShopController
-Route::post('/owner/shops', [OwnerShopController::class ,'shops'] )->middleware(['can:isOwner']);
+Route::post('/owner/shops', [OwnerShopController::class ,'shops'] )->middleware(['auth','can:isOwner']);
 // OwnerShopRegisterController
-Route::post('/owner/shop/register', [OwnerShopRegisterController::class ,'create'] )->middleware(['can:isOwner']);
+Route::post('/owner/shop/register', [OwnerShopRegisterController::class ,'create'] )->middleware(['auth','can:isOwner']);
+Route::post('/owner/shop/store', [OwnerShopRegisterController::class ,'store'] )->middleware(['auth','can:isOwner']);
+// OwnerShopDitailController
+Route::post('/owner/shop/ditail', [OwnerShopDitailController::class ,'ditail'] )->middleware(['auth','can:isOwner']);
+Route::post('/owner/shop/update', [OwnerShopDitailController::class ,'update'] )->middleware(['auth','can:isOwner']);
+Route::post('/owner/shop/delete', [OwnerShopDitailController::class ,'delete'] )->middleware(['auth','can:isOwner']);
 
 
 Route::get('/dashboard', function () {

@@ -13,8 +13,12 @@ class Shop extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
+        'erea_id',
+        'genre_id',
         'shop_name',
         'overview',
+        'image',
     ];
 
     // リレーション

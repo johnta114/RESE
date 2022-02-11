@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-full">
-    <form method="POST" action="/admin/user/register">
+    <form method="POST" action="/owner/shop/register">
         @csrf
         <button type="submit" class="text-blue-600">店舗追加</button>
     </form>
@@ -18,7 +18,7 @@
             <div>{{$shop->shop_name}}</div>
             <div>{{$shop->erea->erea_name}}</div>
             <div>{{$shop->genre->genre_name}}</div>
-                <form action="/admin/user/ditail" method="POST">
+                <form action="/owner/shop/ditail" method="POST">
                     @csrf
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">
                     <button class="cursor-pointer" type="submit">詳細・編集</button>
