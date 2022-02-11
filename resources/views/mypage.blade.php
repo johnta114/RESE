@@ -44,6 +44,7 @@
             </div>
         </div>
         @endforeach
+
     </div>
         <!-- お気に入り一覧 -->
     <div class="md:w-5/12 w-4/5 bg-slate-300 mx-auto h-auto py-4 mb-5 rounded">

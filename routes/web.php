@@ -7,6 +7,14 @@ use App\Http\Controllers\DoneController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminUserDitailController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\OwnerShopController;
+use App\Http\Controllers\OwnerShopRegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +50,26 @@ Route::post('/delete', [MypageController::class ,'reservationDelete'] )->middlew
 Route::post('/reservation', [ReservationController::class ,'reservation'] );
 Route::post('/reservation/update', [ReservationController::class ,'update'] );
 
+// AdminController
+Route::post('/admin', [AdminController::class ,'admin'] )->middleware(['can:isAdmin']);
+// AdminUserController
+Route::post('/admin/users', [AdminUserController::class ,'users'] )->middleware(['can:isAdmin']);
+// AdminUserDitailController
+Route::post('/admin/user/ditail', [AdminUserDitailController::class ,'ditail'] )->middleware(['auth','can:isAdmin']);
+Route::post('/admin/user/update', [AdminUserDitailController::class ,'update'] )->middleware(['auth','can:isAdmin']);
+Route::post('/admin/user/delete', [AdminUserDitailController::class ,'delete'] )->middleware(['auth','can:isAdmin']);
+
+// OwnerController
+Route::post('/owner', [OwnerController::class ,'owner'] )->middleware(['can:isOwner']);
+// OwnerShopController
+Route::post('/owner/shops', [OwnerShopController::class ,'shops'] )->middleware(['can:isOwner']);
+// OwnerShopRegisterController
+Route::post('/owner/shop/register', [OwnerShopRegisterController::class ,'create'] )->middleware(['can:isOwner']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['verified'])->name('dashboard');
+})->middleware(['isOwner'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';

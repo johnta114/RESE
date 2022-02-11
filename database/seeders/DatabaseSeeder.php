@@ -16,11 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EreasTableSeeder::class,
             GenresTableSeeder::class,
-            ShopsTableSeeder::class,
-            ]);
-
-            \App\Models\User::factory(10)->create();
-            \App\Models\Favorite::factory(10)->create();
-            \App\Models\Reservation::factory(10)->create();
+        ]);
+        \App\Models\User::factory(10)->create();
+        $this->call(ShopsTableSeeder::class);
+        \App\Models\Favorite::factory(10)->create();
+        \App\Models\Reservation::factory(10)->create();
     }
 }

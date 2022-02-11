@@ -17,7 +17,6 @@ class CreateGenresTable extends Migration
             $table->id();
             $table->string('genre_name',191);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

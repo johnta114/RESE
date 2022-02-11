@@ -41,7 +41,7 @@ class HomeController extends Controller
 
         // クエリ発行
         $query = Shop::query();
-        
+
         if($search2 == null && $search3 == null) {
             $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->get();
         }elseif($search2 == null){

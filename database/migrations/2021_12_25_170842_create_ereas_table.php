@@ -17,7 +17,6 @@ class CreateEreasTable extends Migration
             $table->id();
             $table->string('erea_name',191)->comment('都道府県名');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -14,8 +14,6 @@
     <!-- jQuery-datetimepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
-
-
 </head>
 <body class="bg-gray-200 p-5 md:px-10 md:py-14 m-auto max-w-7xl">
 <!-- header -->
@@ -33,12 +31,23 @@
                 </form>
                 <form method="POST" action="/mypage">
                     @csrf
-                    <li class="text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">マイページ</a></li>
+                    <li  class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">マイページ</a></li>
                 </form>
+                @if(Auth::user()->role == 1)
+                <form method="POST" action="/admin">
+                    @csrf
+                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">システム管理</a></li>
+                </form>
+                @elseif(Auth::user()->role == 2)
+                <form method="POST" action="/owner">
+                    @csrf
+                    <li  class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">店舗管理</a></li>
+                </form>
+                @endif
                 @endauth
                 @guest
                 <li class="mb-10 text-3xl"><a class="text-blue-600" href="/register">会員登録</a></li>
-                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="/login">ログイン</a></li>
+                <li class="mb-10 text-3xl"><a class="text-blue-600" href="/login">ログイン</a></li>
                 @endguest
                 </ul>
         </nav>

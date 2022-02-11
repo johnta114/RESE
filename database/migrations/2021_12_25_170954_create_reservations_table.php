@@ -21,7 +21,6 @@ class CreateReservationsTable extends Migration
             $table->time('reservation_time');
             $table->unsignedTinyInteger('number_people');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

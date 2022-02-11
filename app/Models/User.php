@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use SoftDeletes;
 
     // リレーション
     public function favorites(){
@@ -18,6 +20,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
+    }
+    public function shops(){
+        return $this->hasMany('App\Models\Shop');
     }
 
     /**
@@ -29,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
