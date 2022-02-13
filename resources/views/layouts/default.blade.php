@@ -24,7 +24,7 @@
         <h1 class="tittle text-4xl text-white font-bold"><a href="/">RESE</a></h1>
     </div>
     <div class="flex justify-between items-center">
-        <nav id="nav" class="absolute md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -right-full md:right-0 bg-gray-200 text-center md:text-left duration-700">
+        <nav id="nav" class="absolute md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -left-full md:right-0 bg-gray-200 text-center md:text-left duration-700">
             <ul class="md:flex md:justify-between md:items-center">
                 <li class="nav-item pb-5 md:pb-0 px-0 md:px-4">
                     <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/"><i class="fas fa-home pr-2 hidden md:inline-block"></i>ホーム</a>

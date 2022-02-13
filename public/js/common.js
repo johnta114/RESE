@@ -2,7 +2,7 @@
 const target = document.getElementById("menu");
 target.addEventListener('click', () => {
     const nav = document.getElementById("nav");
-    nav.classList.toggle('-translate-x-full');
+    nav.classList.toggle('translate-x-full');
     const top = document.getElementById("top");
     top.classList.toggle('top-1/2');
     top.classList.toggle('rotate-45');
