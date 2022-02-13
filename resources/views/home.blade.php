@@ -18,10 +18,10 @@
         <div class="text-center">
             <form action="/search" method="GET">
                 <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <input class="hidden outline-none md:inline-block py-2 px-4 w-full cursor-text focus:border-b focus:border-solid focus:border-orange-400 placeholder:text-black" type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名">
+                    <input class="hidden outline-none md:inline-block py-2 px-4 w-full cursor-text hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400 placeholder:text-black" type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名">
                 </span>
                 <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer focus:border-b focus:border-solid focus:border-orange-400" name="erea">
+                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="erea">
                         <option hidden value="">場所</option>
                         <option value="">全て</option>
                         @foreach ($ereas as $erea)
@@ -30,7 +30,7 @@
                     </select>
                 </span>
                 <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer focus:border-b focus:border-solid focus:border-orange-400" name="genre">
+                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="genre">
                         <option hidden value="">ジャンル</option>
                         <option value="">全て</option>
                         @foreach ($genres as $genre)
@@ -38,7 +38,7 @@
                         @endforeach
                     </select>
                 </span>
-                <button class="py-2 px-6 w-full md:w-auto rounded-b md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">検索</button>
+                <button class="appearance-none outline-none py-2 px-6 w-full md:w-auto rounded-b md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">検索</button>
             </form>
         </div>
     </div>
@@ -46,43 +46,49 @@
 @endsection
 
 @section('content')
-<div class="w-full mx-auto flex flex-wrap justify-center items-center gap-5">
 @foreach ($shops as $shop)
-    <div class="w-full md:w-56 gap-1 rounded-xl bg-white shadow-lg shadow-gray">
-        <div class="w-full rounded-t-xl">
-            <img src="{{$shop->image}}" alt="お店の画像" class="w-full rounded-t-xl">
+    <div class="card w-full md:w-11/12 py-5 px-8 mx-auto border-t border-solid border-black md:flex md:justify-start md:items-center md:gap-20">
+        <div class="card-img w-ful md:w-96">
+            <a class="w-full" href="http://127.0.0.1:8000/ditail/{{$shop->id}}">
+                <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$shop->image}}" alt="お店の画像">
+            </a>
         </div>
-        <div class="w-full h-1/2 rounded-b-xl p-3">
-            <h2 class="font-bold text-xl my-1">{{$shop->shop_name}}</h2>
-            <div class="flex items-center pb-2">
-                <p class="text-sm mr-4">#{{$shop->erea->erea_name}}</p>
-                <p class="text-sm">#{{$shop->genre->genre_name}}</p>
+        <div class="card-contents w-full md:w-[calc(100% - 150rem)]">
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="shop-name text-3xl text-blue-400 hover:text-orange-400 hover:border-b hover:border-solid hover:border-orange-400">
+                    <a href="http://127.0.0.1:8000/ditail/{{$shop->id}}">
+                        {{$shop->shop_name}}
+                    </a>
+                </h2>
+                <div>
+                    @auth
+                        @if ($shop->is_favorited_by_auth_user())
+                            <form action="/unlike" method="POST">
+                                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                                @csrf
+                                <button type="submit"><i class="fas fa-heart text-xl text-red-400 cursor-pointer"></i></button>
+                            </form>
+                        @else
+                            <form action="/like" method="POST">
+                                @csrf
+                                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                                <button type="submit"><i class="fas fa-heart text-xl text-gray-400 cursor-pointer"></i></button>
+                            </form>
+                        @endif
+                    @endauth
+                </div>
             </div>
-            <div class="flex flex-wrap justify-between items-center">
-                <div>
-                    <form action="/ditail" method="GET">
-                        <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                        @csrf
-                        <button type="submit" class="text-sm text-white bg-blue-600 rounded-md py-1.5 px-3 cursor-pointer hover:bg-blue-800">詳しく見る</button>
-                    </form>
-                </div>
-                <div>
-                @auth
-                    @if ($shop->is_favorited_by_auth_user())
-                        <form action="/unlike" method="POST">
-                            <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                            @csrf
-                            <button type="submit"><i class="fas fa-heart text-2xl text-red-500 cursor-pointer"></i></button>
-                        </form>
-                    @else
-                        <form action="/like" method="POST">
-                            @csrf
-                            <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                            <button type="submit"><i class="fas fa-heart text-2xl text-gray-400 cursor-pointer"></i></button>
-                        </form>
-                    @endif
-                @endauth
-                </div>
+            <div class="flex items-center pb-2">
+                <div class="pr-4">タグ:</div>
+                <form action="/search" method="GET">
+                    <input type="hidden" name="erea" value="{{$shop->erea_id}}">
+                    <button class="cursor-pointer">{{$shop->erea->erea_name}}</button>
+                </form>
+                <span class="px-5">/</span>
+                <form action="/search" method="GET">
+                    <input type="hidden" name="genre" value="{{$shop->genre_id}}">
+                    <button class="cursor-pointer">{{$shop->genre->genre_name}}</button>
+                </form>
             </div>
         </div>
     </div>

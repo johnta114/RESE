@@ -19,7 +19,6 @@ class HomeController extends Controller
         $shops = Shop::all();
         $auth = Auth::user();
 
-
         $items = [
             'ereas' => $ereas,
             'genres' => $genres,
@@ -52,7 +51,6 @@ class HomeController extends Controller
             $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('genre_id', $search3)->where('erea_id', $search2)->get();
         }
 
-
         $items =[
             'ereas' => $ereas,
             'genres' => $genres,
@@ -64,10 +62,12 @@ class HomeController extends Controller
 // お気に入り登録
     public function like(Request $request)
     {
-        $favorites = new Favorite;
-        $favorites->shop_id = $request->shop_id;
-        $favorites->user_id = Auth::user()->id;
-        $favorites->save();
+
+        $favorite = Favorite::create([
+            'shop_id' => $request->shop_id,
+            'user_id' => Auth::user()->id,
+        ]);
+        
         return back();
     }
 // お気に入り解除

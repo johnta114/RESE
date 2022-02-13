@@ -37,7 +37,7 @@ Route::post('/unlike', [HomeController::class ,'unlike'] )->middleware(['auth','
 Route::get('/thanks', [thanksController::class ,'thanks'] )->middleware(['verified'])->name('thanks');
 
 // DitailController
-Route::get('/ditail', [DitailController::class ,'ditail'] );
+Route::get('/ditail/{shop_id}', [DitailController::class ,'ditail'] );
 
 // DoneController
 Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth','verified']);

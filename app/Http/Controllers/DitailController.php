@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 
 class DitailController extends Controller
 {
-// 詳細表示
-    public function ditail(Request $request)
+// 店舗詳細画面
+    public function ditail($shop_id)
     {
-        $shop = Shop::find($request->shop_id);
-
+        $shop = Shop::where('id',$shop_id)->first();
         return view('ditail',['shop' => $shop]);
     }
 }
