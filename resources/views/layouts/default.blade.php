@@ -9,6 +9,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/64fa18308f.js" crossorigin="anonymous"></script>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- jQuery-datetimepicker -->
@@ -18,65 +19,70 @@
 <body class="bg-gray-200 p-5 md:px-10 md:py-14 m-auto max-w-7xl">
 <!-- header -->
 <header>
-    <div class="mb-10">
-        <nav id="nav" class="absolute w-full h-screen -left-full bg-gray-200 text-center duration-700">
-            <ul class="mt-20">
-                <li class="mb-10 text-3xl"><a class="text-blue-600" href="/">ホーム</a></li>
-                @auth
-                <form method="POST" action="/logout">
-                    @csrf
-                    <li class="mb-10 text-3xl">
-                        <a class="text-blue-600" href="/logout" onclick="event.preventDefault();this.closest('form').submit();">ログアウト</a>
-                    </li>
-                </form>
-                <form method="POST" action="/mypage">
-                    @csrf
-                    <li  class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">マイページ</a></li>
-                </form>
-                @if(Auth::user()->role == 1)
-                <form method="POST" action="/admin">
-                    @csrf
-                    <li class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">システム管理</a></li>
-                </form>
-                @elseif(Auth::user()->role == 2)
-                <form method="POST" action="/owner">
-                    @csrf
-                    <li  class="mb-10 text-3xl"><a class="text-blue-600" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">店舗管理</a></li>
-                </form>
-                @endif
-                @endauth
+<div class="flex justify-between items-center">
+    <div class="">
+        <h1 class="tittle text-4xl text-white font-bold"><a href="/">RESE</a></h1>
+    </div>
+    <div class="flex justify-between items-center">
+        <nav id="nav" class="absolute md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -right-full md:right-0 bg-gray-200 text-center md:text-left duration-700">
+            <ul class="md:flex md:justify-between md:items-center">
+                <li class="nav-item pb-5 md:pb-0 px-0 md:px-4">
+                    <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/"><i class="fas fa-home pr-2 hidden md:inline-block"></i>ホーム</a>
+                </li>
                 @guest
-                <li class="mb-10 text-3xl"><a class="text-blue-600" href="/register">会員登録</a></li>
-                <li class="mb-10 text-3xl"><a class="text-blue-600" href="/login">ログイン</a></li>
+                    <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                        <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/register"><i class="fas fa-user-plus pr-2 hidden md:inline-block"></i>会員登録</a>
+                    </li>
+                    <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                        <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/login"><i class="fas fa-sign-in-alt pr-2 hidden md:inline-block"></i>ログイン</a>
+                    </li>
                 @endguest
-                </ul>
-        </nav>
-        <div class="md:flex justify-between items-center">
-            <div class="flex items-center">
-                <div id="menu" class="inline-block w-12 h-12 rounded-xl shadow-md shadow-gray-500 bg-blue-600 relative cursor-pointer">
-                    <span id="top" class="inline-block w-1/3 h-px bg-white absolute top-4 left-2 duration-500"></span>
-                    <span id="middle" class="inline-block w-2/3 h-px bg-white absolute top-1/2 left-2 duration-500"></span>
-                    <span id="bottom" class="inline-block w-1/6 h-px bg-white absolute bottom-4 left-2 duration-500"></span>
-                </div>
-                <h1 class="text-5xl font-bold ml-4 text-blue-600 cursor-pointer"><a href="/">Rese</a></h1>
-            </div>
-            <div>
                 @auth
-                <form method="POST" action="/mypage">
-                @csrf
-                    <div class="text-right mt-3">
-                        <a class="text-2xl font-bold cursor-pointer" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">
-                            <i class="fas fa-user pr-3"></i>{{Auth::user()->name}}  さん
-                        </a>
-                    </div>
-                </form>
+                    <form method="POST" action="/mypage">
+                        @csrf
+                        <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                            <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-user pr-2 hidden md:inline-block"></i>マイページ</a>
+                        </li>
+                    </form>
+                        @if(Auth::user()->role == 1)
+                            <form method="POST" action="/admin">
+                                @csrf
+                                <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                                    <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-user-cog pr-2 hidden md:inline-block"></i>システム管理</a>
+                                </li>
+                            </form>
+                        @elseif(Auth::user()->role == 2)
+                            <form method="POST" action="/owner">
+                                @csrf
+                                <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                                    <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">店舗管理</a>
+                                </li>
+                            </form>
+                        @endif
+                    </form>
+                    <form method="POST" action="/logout">
+                        @csrf
+                    <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-white">
+                        <a class="text-2xl md:text-base text-white font-normal hover:border-b hover:border-solid hover:border-white" href="/logout" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-sign-out-alt pr-2 hidden md:inline-block"></i>ログアウト</a>
+                    </li>
                 @endauth
+            </ul>
+        </nav>
+        <div id="menu" class="inline-block w-12 h-12 bg-orange-400 rounded-xl shadow-md shadow-gray-500 cursor-pointer relative md:hidden">
+            <span id="top" class="inline-block w-2/3 h-px bg-white duration-500 absolute top-4 left-2"></span>
+            <span id="middle" class="inline-block w-2/3 h-px bg-white duration-500 absolute top-1/2 left-2"></span>
+            <span id="bottom" class="inline-block w-2/3 h-px bg-white duration-500 absolute bottom-4 left-2"></span>
+        </div>
+    </div>
+</div>
+    <div class="my-3">
+            <div>
                 @yield('header')
             </div>
         </div>
     </div>
 </header>
-    <div class="w-full">
+    <div class="w-full my-10">
         @yield('content')
     </div>
 <script src="{{ asset('/js/common.js') }}"></script>
