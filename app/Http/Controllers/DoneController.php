@@ -11,14 +11,13 @@ class DoneController extends Controller
 {
 // 予約登録
     public function done(ReservationRequest $request) {
-        $inputs = $request->all();
-        $reservations = new Reservation;
-        $reservations->user_id = Auth::user()->id;
-        $reservations->shop_id = $request->shop_id;
-        $reservations->reservation_date = $request->reservation_date;
-        $reservations->reservation_time = $request->reservation_time;
-        $reservations->number_people = $request->number_people;
-        $reservations->save();
+        $reservation = Reservation::create([
+            'user_id' => Auth::user()->id,
+            'shop_id' => $request->shop_id,
+            'reservation_date' => $request->reservation_date,
+            'reservation_time' => $request->reservation_time,
+            'number_people' => $request->number_people,
+        ]);
         return view('done');
     }
 }

@@ -60,10 +60,11 @@
                         @endif
                     </form>
                     <form method="POST" action="/logout">
-                        @csrf
-                    <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-black">
-                        <a class="text-2xl md:text-base text-black font-normal hover:border-b hover:border-solid hover:border-black" href="/logout" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-sign-out-alt pr-2 hidden md:inline-block"></i>ログアウト</a>
-                    </li>
+                            @csrf
+                        <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-black">
+                            <a class="text-2xl md:text-base text-black font-normal hover:border-b hover:border-solid hover:border-black" href="/logout" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-sign-out-alt pr-2 hidden md:inline-block"></i>ログアウト</a>
+                        </li>
+                    </form>
                 @endauth
             </ul>
         </nav>

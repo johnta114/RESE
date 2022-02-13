@@ -49,14 +49,14 @@
 @foreach ($shops as $shop)
     <div class="card w-full md:w-11/12 py-5 px-8 mx-auto border-t border-solid border-black md:flex md:justify-start md:items-center md:gap-20">
         <div class="card-img w-ful md:w-96">
-            <a class="w-full" href="http://127.0.0.1:8000/ditail/{{$shop->id}}">
+            <a class="w-full" href="http://127.0.0.1:8000/ditail/{{{$shop->id}}}">
                 <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$shop->image}}" alt="お店の画像">
             </a>
         </div>
         <div class="card-contents w-full md:w-[calc(100% - 150rem)]">
             <div class="flex justify-between items-center mb-5">
                 <h2 class="shop-name text-3xl text-blue-400 hover:text-orange-400 hover:border-b hover:border-solid hover:border-orange-400">
-                    <a href="http://127.0.0.1:8000/ditail/{{$shop->id}}">
+                    <a href="http://127.0.0.1:8000/ditail/{{{$shop->id}}}">
                         {{$shop->shop_name}}
                     </a>
                 </h2>
@@ -82,12 +82,19 @@
                 <div class="pr-4">タグ:</div>
                 <form action="/search" method="GET">
                     <input type="hidden" name="erea" value="{{$shop->erea_id}}">
-                    <button class="cursor-pointer">{{$shop->erea->erea_name}}</button>
+                    <button class="cursor-pointer" type="submit">{{$shop->erea->erea_name}}</button>
                 </form>
                 <span class="px-5">/</span>
                 <form action="/search" method="GET">
                     <input type="hidden" name="genre" value="{{$shop->genre_id}}">
-                    <button class="cursor-pointer">{{$shop->genre->genre_name}}</button>
+                    <button class="cursor-pointer" type="submit">{{$shop->genre->genre_name}}</button>
+                </form>
+            </div>
+            <div>
+                <form  action="/ditail/{{{$shop->id}}}" method="GET">
+                    @csrf
+                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                    <button type="submit">詳しく見る</button>
                 </form>
             </div>
         </div>
