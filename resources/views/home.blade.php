@@ -47,14 +47,14 @@
 
 @section('content')
 @foreach ($shops as $shop)
-    <div class="card w-full md:w-11/12 py-5 px-8 mx-auto border-t border-solid border-black md:flex md:justify-start md:items-center md:gap-20">
+    <div class="card w-full md:w-11/12 py-5 md:px-8 mx-auto border-t border-solid border-black md:flex md:justify-start md:items-center md:gap-20">
         <div class="card-img w-ful md:w-96">
             <a class="w-full" href="http://127.0.0.1:8000/ditail/{{{$shop->id}}}">
                 <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$shop->image}}" alt="お店の画像">
             </a>
         </div>
         <div class="card-contents w-full md:w-[calc(100% - 150rem)]">
-            <div class="flex justify-between items-center mb-5">
+            <div class="flex justify-between items-center my-5 md:mt-0">
                 <h2 class="shop-name text-3xl text-blue-400 hover:text-orange-400 hover:border-b hover:border-solid hover:border-orange-400">
                     <a href="http://127.0.0.1:8000/ditail/{{{$shop->id}}}">
                         {{$shop->shop_name}}
@@ -90,12 +90,53 @@
                     <button class="cursor-pointer" type="submit">{{$shop->genre->genre_name}}</button>
                 </form>
             </div>
-            <div>
-                <form  action="/ditail/{{{$shop->id}}}" method="GET">
-                    @csrf
-                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                    <button type="submit">詳しく見る</button>
-                </form>
+            <div class="flex justify-start items-center">
+                @foreach ($stars as $star)
+                    @if($star->shop_id == $shop->id)
+                    <div class="mr-8 text-2xl">
+                        @if($star->star_avg > 4)
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        @elseif($star->star_avg > 3)
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                        @elseif($star->star_avg > 2)
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                        @elseif($star->star_avg > 1)
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                        @elseif($star->star_avg > 0)
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                        @else
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                            <i class="fas fa-star text-gray-400"></i>
+                        @endif
+                    </div>
+
+                    <div>{{$star->star_avg}}</div>
+                    
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>

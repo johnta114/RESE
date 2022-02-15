@@ -24,6 +24,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function shops(){
         return $this->hasMany('App\Models\Shop');
     }
+    public function reviews(){
+        return $this->hasMany('App\Models\Review');
+    }
 
     /**
      * The attributes that are mass assignable.

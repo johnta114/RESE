@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Models\Erea;
 use App\Models\Genre;
 use App\Models\Favorite;
+use App\Models\Review;
 use Auth;
 
 class HomeController extends Controller
@@ -17,12 +18,14 @@ class HomeController extends Controller
         $ereas = Erea::all();
         $genres = Genre::all();
         $shops = Shop::all();
+        $stars = Review::selectRaw('shop_id, AVG(star) as star_avg')->groupBy('shop_id')->get();
         $auth = Auth::user();
 
         $items = [
             'ereas' => $ereas,
             'genres' => $genres,
             'shops' => $shops,
+            'stars' => $stars,
             'auth' => $auth,
         ];
 
@@ -51,10 +54,13 @@ class HomeController extends Controller
             $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('genre_id', $search3)->where('erea_id', $search2)->get();
         }
 
+        $stars = Review::selectRaw('shop_id, AVG(star) as star_avg')->groupBy('shop_id')->get();
+
         $items =[
             'ereas' => $ereas,
             'genres' => $genres,
             'shops' => $shops,
+            'stars' => $stars,
         ];
 
         return view('home',$items);

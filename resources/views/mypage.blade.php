@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <th class="font-normal text-white pr-10">時間</th>
-                    <td class="text-white">{{$reservation->reservation_time}}</td>
+                    <td class="text-white">{{substr($reservation->reservation_time, 0, 5)}}</td>
                 </tr>
                 <tr>
                     <th class="font-normal text-white pr-10">人数</th>

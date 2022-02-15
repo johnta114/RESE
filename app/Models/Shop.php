@@ -37,6 +37,9 @@ class Shop extends Model
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
     }
+    public function reviews(){
+        return $this->hasMany('App\Models\Review');
+    }
 
 // お気に入り状況の確認
     public function is_favorited_by_auth_user()

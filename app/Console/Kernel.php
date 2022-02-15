@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('email:reservationuser')->dailyAt('05:00');;
+        $schedule->command('email:reservationuser')->everyMinute();
     }
 
     /**

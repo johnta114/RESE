@@ -29,6 +29,6 @@ class RemindMail extends Mailable
     public function build()
     {
         return $this->view('email.reservationuser')
-        ->with(['user'=>$this->user])->subject('ご登録ありがとうございました');
+        ->with(['user'=>$this->user])->subject('予約の確認');
     }
 }
