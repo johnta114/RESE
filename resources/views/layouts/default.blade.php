@@ -17,13 +17,13 @@
 </head>
 <body class="bg-inherit p-5 md:px-10 md:py-14 m-auto max-w-7xl font-serif">
 <!-- header -->
-<header>
+<header">
 <div class="flex justify-between items-center">
     <div class="">
         <h1 class="tittle text-4xl text-black font-normal font-sans"><a href="/">RESE</a></h1>
     </div>
     <div class="flex justify-between items-center">
-        <nav id="nav" class="absolute bg-white md:bg-none md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -left-full md:right-0 text-center md:text-left duration-700">
+        <nav id="nav" class="absolute z-10 bg-white md:bg-none md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -left-full md:right-0 text-center md:text-left duration-700">
             <ul class="md:flex md:justify-between md:items-center">
                 <li class="nav-item pb-5 md:pb-0 px-0 md:px-4">
                     <a class="text-2xl md:text-base text-black font-normal hover:border-b hover:border-solid hover:border-black" href="/"><i class="fas fa-home pr-2 hidden md:inline-block"></i>ホーム</a>
@@ -68,7 +68,7 @@
                 @endauth
             </ul>
         </nav>
-        <div id="menu" class="inline-block w-12 h-12 bg-orange-400 rounded-xl shadow-md shadow-gray-500 cursor-pointer relative md:hidden">
+        <div id="menu" class="inline-block w-12 h-12 bg-orange-400 rounded-xl shadow-md shadow-gray-500 cursor-pointer relative md:hidden z-20">
             <span id="top" class="inline-block w-2/3 h-px bg-white duration-500 absolute top-4 left-2"></span>
             <span id="middle" class="inline-block w-2/3 h-px bg-white duration-500 absolute top-1/2 left-2"></span>
             <span id="bottom" class="inline-block w-2/3 h-px bg-white duration-500 absolute bottom-4 left-2"></span>
@@ -82,7 +82,7 @@
         </div>
     </div>
 </header>
-    <div class="w-full my-10">
+    <div class="w-full mt-10">
         @yield('content')
     </div>
 <script src="{{ asset('/js/common.js') }}"></script>

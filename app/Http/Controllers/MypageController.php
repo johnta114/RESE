@@ -7,6 +7,7 @@ use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class MypageController extends Controller
 {
@@ -14,6 +15,7 @@ class MypageController extends Controller
     public function mypage(){
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
         $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+
 
         $items = [
             'favorites' => $favorites,

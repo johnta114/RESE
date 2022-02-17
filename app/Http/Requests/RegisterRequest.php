@@ -24,7 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:191|string',
+            'first_name' => 'required|max:191|string',
+            'last_name' => 'required|max:191|string',
             'email' => 'required|email|string|max:191|unique:users',
             'password' => 'required|between:8,191|confirmed',
         ];
@@ -32,8 +33,10 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '名前を入力してください',
-            'name.max' => '名前は191文字以下で入力してください',
+            'first_name.required' => '苗字を入力してください',
+            'first_name.max' => '苗字は191文字以下で入力してください',
+            'last_name.required' => '名前を入力してください',
+            'last_name.max' => '名前は191文字以下で入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスの形式で入力してください',
             'email.max' => 'メールアドレスは191文字以下で入力してください',

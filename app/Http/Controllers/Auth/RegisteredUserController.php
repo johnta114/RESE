@@ -44,24 +44,17 @@ class RegisteredUserController extends Controller
             ]);
             $users =  User::where('role','<=',2)->get();
             return view('admin-user',['users' => $users]);
-            
         }else{
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            ]);
-    
             $user = User::create([
-                'name' => $request->name,
+                'name' => $request->first_name.' '.$request->last_name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-    
+
             event(new Registered($user));
-    
+
             Auth::login($user);
-    
+
             return redirect()->route('thanks');
         }
     }

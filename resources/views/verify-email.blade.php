@@ -1,24 +1,29 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="mx-auto bg-white rounded p-5">
-    <div class="text-center">
-        <h2 class="font-bold pb-3 mx-auto">メールアドレス確認 </h2>
-        <p class="pb-3">登録したメールアドレス確認のため、認証メールを送信しました。</p>
-        <p class="pb-3">メールが届かない場合は、下記ボタンをクリックしてください。</p>
-    </div>
-
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600">登録したメールアドレスに新しい認証メールが送信されました。</div>
-    @endif
-
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-        <div class="text-center">
-            <button class="w-full md:w-auto text-sm text-white bg-blue-600 rounded-md py-1.5 px-3 cursor-pointer hover:bg-blue-800">
-                もう一度、認証メールを送信する
-            </button>
-        </div>
-    </form>
+<div class="flex justify-center items-center gap-4 mb-5">
+    <div class="w-10 h-10 text-base text-center leading-9 text-white bg-orange-400 rounded-full">1</div>
+    <div class="w-10 h-1 bg-orange-400"></div>
+    <div class="w-10 h-10 text-base text-center leading-9 text-white bg-orange-400 rounded-full">2</div>
+    <div class="w-10 h-1 bg-gray-400"></div>
+    <div class="w-10 h-10 text-base text-center leading-9 text-white bg-gray-400 rounded-full">3</div>
 </div>
+    <div class="mx-auto md:w-2/3 rounded bg-white shadow-lg shadow-gray py-5">
+        <div class="text-center">
+            <h2 class="font-bold pb-3 mx-auto">メールアドレス認証 </h2>
+            <p class="text-sm md:text-base mb-3">登録したメールアドレスにメールを送信しました。</p>
+            <p class="text-sm md:text-base mb-5">内容を確認の上登録を完了させてください。</p>
+            @if (session('status') == 'verification-link-sent')
+                <div class="text-xs md:text-base mb-3 font-medium text-green-600">登録したメールアドレスに新しいメールを送信しました。</div>
+            @endif
+            <form method="POST" action="{{ route('verification.send') }}">
+                @csrf
+                <div class="text-center">
+                    <button class="w-full md:w-auto text-sm bg-orange-400 text-white hover:opacity-80 rounded-md py-1.5 px-3 cursor-pointer ">
+                        もう一度、認証メールを送信する
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

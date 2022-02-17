@@ -33,6 +33,7 @@
                     <th class="font-normal text-white pr-10">人数</th>
                     <td class="text-white">{{$reservation->number_people}}</td>
                 </tr>
+                </tr>
             </table>
             <div class="text-right">
                 <form action="/reservation" method="POST">
@@ -83,5 +84,4 @@
         </div>
     </div>
 </div>
-
 @endsection

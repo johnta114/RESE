@@ -11,35 +11,37 @@
         </div>
     </form>
 @endauth
-<div class="md:py-7 md:px-5 bg-white rounded shadow-md shadow-gray-500 flex items-center">
-    <div class="w-full md:px-4 rounded">
-        <div class="hidden md:block text-center h-auto x-auto pb-4 text-base text-black font-normal">店名・場所・ジャンルから探す</div>
-        <div class="black md:hidden text-center h-auto x-auto pt-1 text-base text-black font-normal">場所・ジャンルから探す</div>
-        <div class="text-center">
-            <form action="/search" method="GET">
-                <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <input class="hidden outline-none md:inline-block py-2 px-4 w-full cursor-text hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400 placeholder:text-black" type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名">
-                </span>
-                <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="erea">
-                        <option hidden value="">場所</option>
-                        <option value="">全て</option>
-                        @foreach ($ereas as $erea)
-                        <option value="{{$erea->id}}">{{$erea->erea_name}}</option>
-                        @endforeach
-                    </select>
-                </span>
-                <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                    <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="genre">
-                        <option hidden value="">ジャンル</option>
-                        <option value="">全て</option>
-                        @foreach ($genres as $genre)
-                        <option value="{{$genre->id}}">{{$genre->genre_name}}</option>
-                        @endforeach
-                    </select>
-                </span>
-                <button class="appearance-none outline-none py-2 px-6 w-full md:w-auto rounded-b md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">検索</button>
-            </form>
+<div class="mb-32 bg-[url('{{asset('img/pexels-luna-lovegood-4087615.jpg')}}')] w-full h-96 bg-cover relative">
+    <div class="md:py-7 md:px-5 bg-white rounded shadow-md shadow-gray-500 flex items-center absolute z-0 left-0 md:left-10 right-0 md:right-10 -bottom-20">
+        <div class="w-full md:px-4 rounded">
+            <div class="hidden md:block text-center h-auto x-auto pb-4 text-base text-black font-normal">店名・場所・ジャンルから探す</div>
+            <div class="black md:hidden text-center h-auto x-auto pt-1 text-base text-black font-normal">場所・ジャンルから探す</div>
+            <div class="text-center">
+                <form action="/search" method="GET">
+                    <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
+                        <input class="hidden outline-none md:inline-block py-2 px-4 w-full cursor-text hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400 placeholder:text-black" type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名">
+                    </span>
+                    <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
+                        <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="erea">
+                            <option hidden value="">場所</option>
+                            <option value="">全て</option>
+                            @foreach ($ereas as $erea)
+                            <option value="{{$erea->id}}">{{$erea->erea_name}}</option>
+                            @endforeach
+                        </select>
+                    </span>
+                    <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
+                        <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer hover:border-b hover:border-orange-400 hover:border-solid focus:border-b focus:border-solid focus:border-orange-400" name="genre">
+                            <option hidden value="">ジャンル</option>
+                            <option value="">全て</option>
+                            @foreach ($genres as $genre)
+                            <option value="{{$genre->id}}">{{$genre->genre_name}}</option>
+                            @endforeach
+                        </select>
+                    </span>
+                    <button class="appearance-none outline-none py-2 px-6 w-full md:w-auto rounded-b md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">検索</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -132,9 +134,7 @@
                             <i class="fas fa-star text-gray-400"></i>
                         @endif
                     </div>
-
-                    <div>{{$star->star_avg}}</div>
-                    
+                    <div>{{number_format(round($star->star_avg, 2),2)}}</div>
                     @endif
                 @endforeach
             </div>
