@@ -6,7 +6,7 @@
             @csrf
             <input type="hidden" name="id" value="{{$user->id}}">
             <div class="flex justify-start items-start gap-5">
-                <div>ユーザー名</div>
+                <div>名前</div>
                 <div><input type="text" name="name" value="{{$user->name}}"></div>
             </div>
             <div class="flex justify-start items-start gap-5">
@@ -17,7 +17,7 @@
                 <div>権限</div>
                 <div>
                     <select name="role">
-                        <option hidden selected value="{{$user->lore}}">
+                        <option hidden selected value="{{$user->role}}">
                         @if($user->role === 1)
                             管理者
                         @elseif($user->role === 2)

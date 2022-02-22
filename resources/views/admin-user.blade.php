@@ -18,7 +18,7 @@
         @foreach($users as $user)
             <tr>
                 <td class="text-center">{{$user->name}}</td>
-                <td class="text-center">{{$user->email}}</td>
+                <td class="text-center ">{{$user->email}}</td>
                 <td class="text-center">
                     @if($user->role === 1)
                         管理者
