@@ -91,7 +91,7 @@
                     <button class="border border-solid border-gray-400 bg-gray-200 py-1 px-2 rounded cursor-pointer hover:opacity-80" type="submit">{{$shop->erea->erea_name}}</button>
                 </form>
                 <span class="px-5">/</span>
-                <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">エリア</div>
+                <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">ジャンル</div>
                 <form action="/search" method="GET">
                     <input type="hidden" name="genre" value="{{$shop->genre_id}}">
                     <button class="border border-solid border-gray-400 bg-gray-200 py-1 px-2 rounded cursor-pointer hover:opacity-80" type="submit">{{$shop->genre->genre_name}}</button>
@@ -141,7 +141,7 @@
                     </div>
                     <div>{{number_format(round($star->star_avg, 2),2)}}</div>
                     @endif
-@endforeach
+                @endforeach
             </div>
         </div>
     </div>

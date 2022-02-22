@@ -28,6 +28,6 @@ class AdminUserDitailController extends Controller
         $delete -> delete();
 
         $users =  User::all();
-        return view('admin-user',['users' => $users]);
+        return view('admin-users',['users' => $users]);
     }
 }

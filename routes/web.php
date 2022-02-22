@@ -55,6 +55,7 @@ Route::post('/reservation/update', [ReservationController::class ,'update'] );
 Route::post('/admin', [AdminController::class ,'admin'] )->middleware(['can:isAdmin']);
 // AdminUserController
 Route::post('/admin/users', [AdminUserController::class ,'users'] )->middleware(['can:isAdmin']);
+Route::post('/admin/users/search', [AdminUserController::class ,'search'] )->middleware(['can:isAdmin']);
 // AdminUserDitailController
 Route::post('/admin/user/ditail', [AdminUserDitailController::class ,'ditail'] )->middleware(['auth','can:isAdmin']);
 Route::post('/admin/user/update', [AdminUserDitailController::class ,'update'] )->middleware(['auth','can:isAdmin']);
