@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('pageName')
+    会員登録 - STEP2 メール認証 -
+@endsection
+
 @section('content')
 <div class="flex justify-center items-center gap-4 mb-5">
     <div class="w-10 h-10 text-base text-center leading-9 text-white bg-orange-400 rounded-full">1</div>

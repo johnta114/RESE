@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('pageName')
+    予約完了
+@endsection
+
 @section('content')
     <div class="md:w-96 h-60 rounded bg-white shadow-lg shadow-gray m-auto flex justify-center items-center">
         <div class="text-center ">

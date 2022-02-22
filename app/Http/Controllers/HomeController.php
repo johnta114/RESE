@@ -17,7 +17,8 @@ class HomeController extends Controller
     {
         $ereas = Erea::all();
         $genres = Genre::all();
-        $shops = Shop::all();
+        $shops = Shop::Paginate(20);
+        $shopCount = Shop::count();
         $stars = Review::selectRaw('shop_id, AVG(star) as star_avg')->groupBy('shop_id')->get();
         $auth = Auth::user();
 
@@ -25,6 +26,7 @@ class HomeController extends Controller
             'ereas' => $ereas,
             'genres' => $genres,
             'shops' => $shops,
+            'shopCount' => $shopCount,
             'stars' => $stars,
             'auth' => $auth,
         ];
@@ -36,6 +38,7 @@ class HomeController extends Controller
     public function search(Request $request){
         $ereas = Erea::all();
         $genres = Genre::all();
+        $shopCount = Shop::count();
 
         $search1 = $request->input('keyword');
         $search2 = $request->input('erea');
@@ -45,13 +48,13 @@ class HomeController extends Controller
         $query = Shop::query();
 
         if($search2 == null && $search3 == null) {
-            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->get();
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->Paginate(20);
         }elseif($search2 == null){
-            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%") -> where('genre_id', $search3)->get();
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%") -> where('genre_id', $search3)->Paginate(20);
         }elseif($search3 == null){
-            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('erea_id', $search2)->get();
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('erea_id', $search2)->Paginate(20);
         }else{
-            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('genre_id', $search3)->where('erea_id', $search2)->get();
+            $shops = $query->where('shop_name', 'LIKE',"%{$search1}%")->where('genre_id', $search3)->where('erea_id', $search2)->Paginate(20);
         }
 
         $stars = Review::selectRaw('shop_id, AVG(star) as star_avg')->groupBy('shop_id')->get();
@@ -60,7 +63,9 @@ class HomeController extends Controller
             'ereas' => $ereas,
             'genres' => $genres,
             'shops' => $shops,
+            'shopCount' => $shopCount,
             'stars' => $stars,
+            'request'=>$request,
         ];
 
         return view('home',$items);

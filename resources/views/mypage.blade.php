@@ -1,87 +1,102 @@
 @extends('layouts.default')
 
+@section('pageName')
+    {{Auth::user()->name}}さんのマイページ
+@endsection
+
 @section('content')
-<div class="md:flex justify-center gap-8">
-    <!-- 予約一覧 -->
-    <div class="md:w-5/12 w-4/5 bg-slate-300 mx-auto h-auto py-4 mb-5 rounded">
-        <h2 class="text-2xl font-bold mb-5 text-center">予約状況</h2>
-        @foreach ($reservations as $reservation)
-        <div class="bg-blue-600 w-4/5 mb-5 mx-auto p-5 rounded shadow-md shadow-gray-500">
-            <div class="flex justify-between items-center">
-                <i class="far fa-clock text-white"></i>
+<div class="w-full mb-8 py-2 rounded">
+    <ul class="flex justify-center items-center gap-10 text-base text-black font-nomal cursor-pointer">
+        <li><a href="#reservation" class="border-b border-solid border-transparent hover:border-black">予約一覧</a></li>
+        <li><a href="#favorite" class="border-b border-solid border-transparent hover:border-black">お気に入り一覧</a></li>
+    </ul>
+</div>
+
+<!-- 予約一覧 -->
+<div id="reservation" class="w-full h-auto mb-8 rounded">
+    <h2 class="text-2xl font-bold mb-5 text-center">予約一覧</h2>
+    <div class="w-full md:flex md:flex-wrap md:justify-center md:items-center gap-5">
+    @foreach ($reservations as $reservation)
+        <div class="w-full md:w-64 p-5 rounded shadow-md shadow-gray-500">
+            <div class="w-full flex justify-between items-center mb-1">
+                <i class="far fa-clock text-xl text-black"></i>
                 <form action="/delete" method="POST">
                     <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                     <input type="hidden" name="created_at" value="{{$reservation->created_at}}">
                     @csrf
-                    <button type="submit"><i class="far fa-times-circle text-white"></i></button>
+                    <button type="submit"><i class="far fa-times-circle text-xl text-black hover:text-orange-400 pointer"></i></button>
                 </form>
             </div>
-            <table>
-                <tr>
-                    <th class="font-normal text-white pr-10">店名</th>
-                    <td class="font-normal text-white">{{$reservation->shop->shop_name}}</td>
-                </tr>
-                <tr>
-                    <th class="font-normal text-white pr-10">日付</th>
-                    <td class="text-white">{{$reservation->reservation_date}}</td>
-                </tr>
-                <tr>
-                    <th class="font-normal text-white pr-10">時間</th>
-                    <td class="text-white">{{substr($reservation->reservation_time, 0, 5)}}</td>
-                </tr>
-                <tr>
-                    <th class="font-normal text-white pr-10">人数</th>
-                    <td class="text-white">{{$reservation->number_people}}</td>
-                </tr>
-                </tr>
-            </table>
+            <div class="w-full mb-2">
+                <div class="w-full flex justify-start items-center gap-10 text-base text-black font-normal">
+                    <div class="ml-3">店名</div>
+                    <div>{{$reservation->shop->shop_name}}</div>
+                </div>
+                <div class="w-full flex justify-start items-center gap-10 text-base text-black font-normal">
+                    <div class="ml-3">日付</div>
+                    <div>{{$reservation->reservation_date}}</div>
+                </div>
+                <div class="w-full flex justify-start items-center gap-10 text-base text-black font-normal">
+                    <div class="ml-3">時間</div>
+                    <div>{{substr($reservation->reservation_time, 0, 5)}}</div>
+                </div>
+                <div class="w-full flex justify-start items-center gap-10 text-base text-black font-normal">
+                    <div class="ml-3">人数</div>
+                    <div>{{$reservation->number_people}}</div>
+                </div>
+            </div>
             <div class="text-right">
                 <form action="/reservation" method="POST">
                     <input type="hidden" name="reservation_id" value="{{$reservation->id}}">
                     <input type="hidden" name="created_at" value="{{$reservation->created_at}}">
                     @csrf
-                    <button type="submit" class="text-xs tect-white bg-blue-500 text-white py-1.5 px-3 rounded">予約変更</button>
+                    <button type="submit" class="appearance-none outline-none py-2 px-6 w-full md:w-auto rounded md:rounded bg-orange-400 text-sm text-white hover:opacity-80 cursor-pointer">予約変更</button>
                 </form>
             </div>
         </div>
-        @endforeach
-
+    @endforeach
     </div>
-        <!-- お気に入り一覧 -->
-    <div class="md:w-5/12 w-4/5 bg-slate-300 mx-auto h-auto py-4 mb-5 rounded">
+</div>
+    <!-- お気に入り一覧 -->
+    <div id="favorite" class="w-full md:w-10/12 md:mx-auto">
         <h2 class="text-2xl font-bold mb-5 text-center">お気に入り一覧</h2>
-        <div class="md:flex flex-wrap justify-center items-center">
-            @foreach ($favorites as $favorite)
-            <div class="w-4/5 md:w-56 mx-auto rounded-xl bg-white shadow-md shadow-gray-500 mb-5">
-                <div class="w-full rounded-t-xl">
-                    <img src="{{$favorite->shop->image}}" alt="お店の画像" class="w-full rounded-t-xl">
+        @foreach ($favorites as $favorite)
+            <div class="w-full md:flex md:justify-between md:items-center md:gap-20 py-5 mx-auto border-t border-solid border-gray-400">
+                <div class="card-img w-ful md:w-96">
+                    <a class="w-full" href="http://127.0.0.1:8000/ditail/{{{$favorite->shop->id}}}">
+                        <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$favorite->shop->image}}" alt="お店の画像">
+                    </a>
                 </div>
-                <div class="w-full rounded-b-xl p-3">
-                    <h2 class="font-bold text-lg my-1">{{$favorite->shop->shop_name}}</h2>
-                    <div class="flex items-center pb-2">
-                        <p class="text-xs mr-4">#{{$favorite->shop->erea->erea_name}}</p>
-                        <p class="text-xs">#{{$favorite->shop->genre->genre_name}}</p>
-                    </div>
-                    <div class="flex flex-wrap justify-between items-center">
+                <div class="card-contents w-full md:w-[calc(100% - 150rem)]">
+                    <div class="flex justify-between items-center my-5 md:mt-0">
+                        <h2 class="shop-name text-2xl text-blue-400 hover:text-orange-400 border-b border-solid border-transparent hover:border-orange-400">
+                            <a href="http://127.0.0.1:8000/ditail/{{{$favorite->shop->id}}}">
+                                {{$favorite->shop->shop_name}}
+                            </a>
+                        </h2>
                         <div>
-                            <form action="/ditail" method="GET">
-                                <input type="hidden" name="shop_id" value="{{$favorite->shop_id}}">
-                                @csrf
-                                <button type="submit" class="text-xs text-white bg-blue-600 rounded-md py-1.5 px-3">詳しく見る</button>
-                            </form>
-                        </div>
-                        <div>
-                            <form action="/mypage/unlike" method="POST">
-                                <input type="hidden" name="shop_id" value="{{$favorite->shop_id}}">
-                                @csrf
-                                <button type="submit"><i class="fas fa-heart text-xl text-red-500"></i></button>
-                            </form>
+                            @auth
+                                @if ($favorite->shop->is_favorited_by_auth_user())
+                                <form action="/unlike" method="POST">
+                                        <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
+                                        @csrf
+                                        <button type="submit"><i class="fas fa-heart text-xl text-red-400 cursor-pointer"></i></button>
+                                    </form>
+                                @else
+                                <form action="/like" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
+                                        <button type="submit"><i class="fas fa-heart text-xl text-gray-400 cursor-pointer"></i></button>
+                                    </form>
+                                @endif
+                                @endauth
                         </div>
                     </div>
+                        <div class="text-base text-black font-normal w-full my-5 line-clamp-2">{{$favorite->shop->overview}}</div>
                 </div>
             </div>
             @endforeach
-        </div>
     </div>
-</div>
+<button class="md:hidden fixed right-5 bottom-5 opacity-80 w-12 h-12 rounded-full border-none cursor-pointer bg-gray-400" id="button">↑</button>
+<script src="{{ asset('/js/home.js') }}"></script>
 @endsection

@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>RESE</title>
+    <title>@yield('pageName')</title>
+    <link rel="icon" type="image/png" href="{{asset('img/icon.png')}}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <script src="https://kit.fontawesome.com/64fa18308f.js" crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -19,8 +21,12 @@
 <!-- header -->
 <header">
 <div class="flex justify-between items-center">
-    <div class="">
-        <h1 class="tittle text-4xl text-black font-normal font-sans"><a href="/">RESE</a></h1>
+    <div class="mb-3">
+        <h1 class="tittle text-4xl text-black font-normal font-sans">
+            <a class="flex items-center gap-1" href="/">
+                <img class="w-12" src="{{asset('img/logo.png')}}" alt="ロゴ">RESE
+            </a>
+        </h1>
     </div>
     <div class="flex justify-between items-center">
         <nav id="nav" class="absolute z-10 bg-white md:bg-none md:static pt-16 md:pt-0 w-full md:w-auto h-screen md:h-auto top-0 -left-full md:right-0 text-center md:text-left duration-700">
@@ -54,7 +60,7 @@
                             <form method="POST" action="/owner">
                                 @csrf
                                 <li class="nav-item pb-5 md:pb-0 px-0 md:px-4 md:border-l md:border-solid md:border-black">
-                                    <a class="text-2xl md:text-base text-black font-normal hover:border-b hover:border-solid hover:border-black" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-store-alt pr-2 hidden md:inline-block"></i>店舗管理</a>
+                                    <a class="text-2xl md:text-base text-black font-normal hover:border-b hover:border-solid hover:border-black" href="/mypage" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-store-alt pr-2 hidden md:inline-block"></i>店舗管理</a>
                                 </li>
                             </form>
                         @endif

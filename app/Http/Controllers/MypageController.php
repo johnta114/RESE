@@ -14,7 +14,10 @@ class MypageController extends Controller
 // 一覧表示
     public function mypage(){
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)
+            ->orderBy('reservation_date', 'asc')
+            ->orderBy('reservation_time', 'asc')
+            ->get();
 
 
         $items = [
@@ -30,7 +33,10 @@ class MypageController extends Controller
         $unlike -> delete();
 
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        $reservations = Reservation::where('user_id', Auth::user()->id)
+        ->orderBy('reservation_date', 'asc')
+        ->orderBy('reservation_time', 'asc')
+        ->get();
 
         $items = [
             'favorites' => $favorites,
@@ -45,7 +51,10 @@ class MypageController extends Controller
         $delete = Reservation::where('id', $request->reservation_id)->where('created_at',$request->created_at)->first();
         $delete -> delete();
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
-        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        $reservations = Reservation::where('user_id', Auth::user()->id)
+            ->orderBy('reservation_date', 'asc')
+            ->orderBy('reservation_time', 'asc')
+            ->get();
 
         $items = [
             'favorites' => $favorites,

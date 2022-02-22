@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('pageName')
+    会員登録 - STEP3 登録完了 -
+@endsection
+
 @section('content')
 
 <div class="flex justify-center items-center gap-4 mb-5">
