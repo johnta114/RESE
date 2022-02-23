@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('pageName')
+    ユーザー一覧
+@endsection
+
 @section('content')
     <div class="md:py-7 md:px-5 mb-10 bg-white rounded shadow-md shadow-gray-500 flex items-center md:left-10 right-0 md:right-10 bottom-0 md:-bottom-20">
         <div class="w-full md:px-4 rounded">
@@ -10,9 +14,8 @@
                         <input class="outline-none md:inline-block py-2 px-4 w-full cursor-text border-b border-solid border-transparent hover:border-b hover:border-orange-400  focus:border-b focus:border-orange-400 placeholder:text-black" type="text" name="name" value="{{old('name')}}" placeholder="名前">
                     </span>
                     <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
-                        <input class="outline-none md:inline-block py-2 px-4 w-full cursor-text border-b border-solid border-transparent hover:border-b hover:border-orange-400  focus:border-b focus:border-orange-400 placeholder:text-black" type="email" name="email" value="{{old('email')}}" placeholder="メールアドレス">
+                        <input class="outline-none md:inline-block py-2 px-4 w-full cursor-text border-b border-solid border-transparent hover:border-b hover:border-orange-400  focus:border-b focus:border-orange-400 placeholder:text-black" type="text" name="email" value="{{old('email')}}" placeholder="メールアドレス">
                     </span>
-
                     <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
                         <select class="appearance-none outline-none py-2 px-4 w-full bg-white rounded-none cursor-pointer border-b border-transparent hover:border-orange-400 border-solid focus:border-b focus:border-solid focus:border-orange-400" name="role">
                             <option hidden value="">権限</option>

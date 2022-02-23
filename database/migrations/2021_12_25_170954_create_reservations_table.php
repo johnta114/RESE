@@ -20,7 +20,7 @@ class CreateReservationsTable extends Migration
             $table->date('reservation_date');
             $table->time('reservation_time');
             $table->unsignedTinyInteger('number_people');
-            $table->timestamp('visited_at');
+            $table->datetime('visited_at')->nullable();
             $table->timestamps();
         });
     }

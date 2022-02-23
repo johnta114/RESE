@@ -25,16 +25,31 @@ class OwnerShopRegisterController extends Controller
     // 店舗作成
     public function store(Request $request)
     {
+
+        $post_data = $request->except('imagefile');
+        $imagefile = $request->file('imagefile');
+        $temp_path = $imagefile->store('public/temp');
+        $read_temp_path = str_replace('public/', 'storage/', $temp_path);
+
         $shop = Shop::create([
             'shop_name' => $request->shop_name,
             'user_id' => Auth::user()->id,
             'erea_id' => $request->erea_id,
             'genre_id' => $request->genre_id,
             'overview' => $request->overview,
-            'image' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg'
+            'image' => $read_temp_path,
         ]);
 
         $shops =  Shop::where('user_id',Auth::user()->id)->get();
-        return view('owner-shops',['shops' => $shops]);
+        $ereas = Erea::all();
+        $genres = Genre::all();
+
+        $items =[
+            'ereas' => $ereas,
+            'genres' => $genres,
+            'shops' => $shops,
+        ];
+
+        return view('owner-shops',$items);
     }
 }

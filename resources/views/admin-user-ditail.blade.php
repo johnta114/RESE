@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('pageName')
+    {{Auth::user()->name}} 詳細
+@endsection
+
 @section('content')
     <div class="w-full md:w-2/3 mx-auto">
         <form action="/admin/user/update" method="POST">

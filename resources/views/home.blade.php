@@ -4,16 +4,6 @@
 @endsection
 <!-- 検索 -->
 @section('header')
-<!-- @auth
-    <form method="POST" action="/mypage">
-        @csrf
-        <div class="text-right my-3">
-            <a class="text-xl text-black font-bold cursor-pointer hover:opacity-60" href="/mypage"  onclick="event.preventDefault();this.closest('form').submit();">
-                <i class="fas fa-user pr-3"></i>{{Auth::user()->name}}  さん
-            </a>
-        </div>
-    </form>
-@endauth -->
 <div class="mb-5 md:mb-32 bg-[url('{{asset('img/firstview.jpg')}}')] w-full h-96 bg-cover relative">
     <div class="md:py-7 md:px-5 bg-white rounded shadow-md shadow-gray-500 flex items-center absolute z-0 left-0 md:left-10 right-0 md:right-10 bottom-0 md:-bottom-20 opacity-80 md:opacity-100">
         <div class="w-full md:px-4 rounded">

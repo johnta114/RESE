@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('pageName')
-    {{$shop->shop_name}}　店舗詳細ページ
+    {{$shop->shop_name}} 店舗詳細ページ
 @endsection
 
 @section('content')

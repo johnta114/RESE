@@ -10,7 +10,7 @@
         <li>
             <form action="/admin/users" method="POST">
                 @csrf
-                <button class="border-b border-solid border-transparent hover:border-black" type="submit">ユーザ一覧</button>
+                <button class="border-b border-solid border-transparent hover:border-black" type="submit">ユーザー一覧</button>
             </form>
         </li>
         <li>
