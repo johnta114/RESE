@@ -44,7 +44,7 @@
 @foreach ($shops as $shop)
     <div class="card w-full md:w-11/12 py-5 md:px-8 mx-auto border-t border-solid border-gray-400 md:flex md:justify-start md:items-center md:gap-20 mb-5">
         <div class="card-img w-ful md:w-96">
-            <a class="w-full" href="http://127.0.0.1:8000/ditail/{{{$shop->id}}}">
+            <a class="w-full" href="https://fierce-bayou-22150.herokuapp.com/ditail/{{{$shop->id}}}">
                 <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$shop->image}}" alt="お店の画像">
             </a>
         </div>
