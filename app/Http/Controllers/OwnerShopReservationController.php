@@ -16,7 +16,6 @@ class OwnerShopReservationController extends Controller
             ->orderBy('reservation_time', 'asc')
             ->get();
         $shop = Shop::selectRaw('shop_name')->where('id',$request->shop_id);
-        // dd($shop);
 
         $items =[
             'reservations' => $reservations,

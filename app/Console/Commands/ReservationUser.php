@@ -42,10 +42,11 @@ class ReservationUser extends Command
     public function handle()
     {
         $users = User::whereHas('reservations', function($query){
-            $query->wheredate('reservation_date',Carbon::today());
+            $query->wheredate('reservation_date',new Carbon('today'));
         })->get();
         foreach($users as $user){
             return Mail::to($user->email)->send(new RemindMail($user));
         }
+
     }
 }

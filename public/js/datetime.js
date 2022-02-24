@@ -3,7 +3,7 @@ $(function() {
     $('.datepicker').datetimepicker({
         timepicker:false, // 日付のみ表示
         format:'Y-m-d', // フォーマットの指定。オプションはカンマ区切りで複数指定可能
-        minDate:'+1970/01/02',//昨日までの日付選択不可
+        minDate:'+1970/01/01',//昨日までの日付選択不可
         maxDate:'+1970/02/01'
     });
     $('.timepicker').datetimepicker({
