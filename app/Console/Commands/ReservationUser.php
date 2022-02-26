@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RemindMail;
 use App\Models\User;
+use App\Models\Reservation;
 use Carbon\Carbon;
 
 class ReservationUser extends Command
@@ -42,8 +43,9 @@ class ReservationUser extends Command
     public function handle()
     {
         $users = User::whereHas('reservations', function($query){
-            $query->wheredate('reservation_date',new Carbon('today'));
+            $query->where('visited_at',null)->where('reservation_date',Carbon::today()->toDateString());
         })->get();
+
         foreach($users as $user){
             return Mail::to($user->email)->send(new RemindMail($user));
         }

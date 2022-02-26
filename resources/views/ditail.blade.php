@@ -14,7 +14,8 @@
         </div>
         <div class="flex items-center mb-5">
             <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">場所</div>
-            <div class="text-base text-black font-normal mr-5">{{$shop->erea->erea_name}}</div>
+            <div class="text-base text-black font-normal">{{$shop->erea->erea_name}}</div>
+            <span class="px-5">/</span>
             <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">ジャンル</div>
             <div class="text-base text-black font-normal">{{$shop->genre->genre_name}}</div>
         </div>
