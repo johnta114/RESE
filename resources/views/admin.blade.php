@@ -14,9 +14,15 @@
             </form>
         </li>
         <li>
-            <form action="/admin/users" method="POST">
+            <form action="/admin/shops" method="POST">
                 @csrf
-                <button class="border-b border-solid border-transparent hover:border-black" type="submit">店舗一覧</button>
+                <button class="border-b border-solid border-transparent hover:border-black" type="submit">ショップ一覧</button>
+            </form>
+        </li>
+        <li>
+            <form action="/mail" method="POST">
+                @csrf
+                <button class="border-b border-solid border-transparent hover:border-black" type="submit">メール</button>
             </form>
         </li>
     </ul>

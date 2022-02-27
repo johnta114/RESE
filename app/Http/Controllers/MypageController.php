@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use App\Models\Shop;
 use Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Carbon\Carbon;
 
 class MypageController extends Controller
 {
@@ -15,6 +16,7 @@ class MypageController extends Controller
     public function mypage(){
         $favorites = Favorite::where('user_id', Auth::user()->id)->get();
         $reservations = $reservations = Reservation::where('user_id', Auth::user()->id)
+            ->where('visited_at',null)
             ->orderBy('reservation_date', 'asc')
             ->orderBy('reservation_time', 'asc')
             ->get();

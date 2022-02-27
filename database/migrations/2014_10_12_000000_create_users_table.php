@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-             // Role 1=管理者 2=店舗責任者 3=一般ユーザー
+             // Role 1=管理者 2=店舗責任者 4=一般ユーザー
             $table->tinyInteger('role')->default(4);
             $table->rememberToken();
             $table->timestamps();

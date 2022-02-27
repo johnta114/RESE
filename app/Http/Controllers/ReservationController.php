@@ -19,9 +19,10 @@ class ReservationController extends Controller
 
         $update = $request->all();
         unset($update['_token']);
-        Reservation::where('id', $request->id)->update($update);
+        unset($update['reservation_id']);
+        Reservation::where('id', $request->reservation_id)->update($update);
 
-        $reservation = Reservation::where('id', $request->id)->first();
+        $reservation = Reservation::where('id', $request->reservation_id)->first();
         return view('reservation-update',['reservation' => $reservation]);
     }
 

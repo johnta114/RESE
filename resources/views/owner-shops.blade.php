@@ -8,7 +8,11 @@
 <div class="md:py-7 md:px-5 mb-10 bg-white rounded shadow-md shadow-gray-500 flex items-center md:left-10 right-0 md:right-10 bottom-0 md:-bottom-20">
         <div class="w-full md:px-4 rounded">
             <div class="text-center">
+                @if(Request::is('owner/shops'))
                 <form action="/owner/shops/search" method="POST">
+                @else
+                <form action="/admin/shops/search" method="POST">
+                @endif
                     @csrf
                     <span class="inline-block w-full md:w-3/12 md:border-l md:border-solid">
                         <input class="outline-none md:inline-block py-2 px-4 w-full cursor-text border-b border-solid border-transparent hover:border-b hover:border-orange-400  focus:border-b focus:border-orange-400 placeholder:text-black" type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名">
@@ -38,25 +42,32 @@
     </div>
 
 <div class="w-full">
+    @if(Request::is('owner/shops'))
     <div class="mb-5">
         <form method="POST" action="/owner/shop/register">
             @csrf
             <button type="submit" class="text-base font-normal text-blue-400 border-b border-solid border-transparent hover:border-orange-400 hover:text-orange-400 cursor-pointer">店舗追加</button>
         </form>
     </div>
+    @endif
     <table class="w-full text-base text-black font-normal table-fixed">
         <tr class="w-full">
             <th class="w-1/3 md:w-1/5 pb-5">店舗名</th>
             <th class="w-1/5 hidden md:table-cell pb-5">エリア</th>
             <th class="w-1/5 hidden md:table-cell pb-5">ジャンル</th>
+            @if(Request::is('owner/shops'))
             <th class="w-1/3 md:w-1/5 pb-5"></th>
             <th class="w-1/3 md:w-1/5 pb-5"></th>
+            @else
+            <th class="w-1/3 md:w-1/5 pb-5">店舗責任者</th>
+            @endif
         </tr>
         @foreach($shops as $shop)
             <tr class="w-full">
                 <td class="w-1/3 md:w-1/5 text-center pb-3">{{$shop->shop_name}}</td>
                 <td class="w-1/5 text-center hidden md:table-cell pb-3">{{$shop->erea->erea_name}}</td>
                 <td class="w-1/5 text-center hidden md:table-cell pb-3">{{$shop->genre->genre_name}}</td>
+                @if(Request::is('owner/shops'))
                 <td class="w-1/3 md:w-1/5 text-center pb-3">
                     <form action="/owner/shop/reservation" method="POST">
                         @csrf
@@ -71,6 +82,9 @@
                         <button class="py-1 px-2 rounded md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">編集</button>
                     </form>
                 </td>
+                @else
+                <td class="w-1/5 text-center pb-3">{{$shop->user->name}}</td>
+                @endif
             </tr>
         @endforeach
     </table>
