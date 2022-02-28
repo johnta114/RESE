@@ -15,6 +15,6 @@ class Genre extends Model
     ];
        // リレーション
     public function shop(){
-        return $this->hasOne('App\Models\shop');
+        return $this->hasOne('App\Models\Shop');
     }
 }

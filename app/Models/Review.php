@@ -20,7 +20,7 @@ class Review extends Model
         return $this->belongsTo('App\Models\User');
     }
     public function shop(){
-        return $this->belongsTo('App\Models\shop');
+        return $this->belongsTo('App\Models\Shop');
     }
 
 }
