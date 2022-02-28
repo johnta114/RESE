@@ -42,7 +42,7 @@
     </div>
 
 <div class="w-full">
-    @if(Request::is('owner/shops'))
+    @if(Auth::user()->role == 2)
     <div class="mb-5">
         <form method="POST" action="/owner/shop/register">
             @csrf
@@ -55,7 +55,7 @@
             <th class="w-1/3 md:w-1/5 pb-5">店舗名</th>
             <th class="w-1/5 hidden md:table-cell pb-5">エリア</th>
             <th class="w-1/5 hidden md:table-cell pb-5">ジャンル</th>
-            @if(Request::is('owner/shops'))
+            @if(Auth::user()->role == 2)
             <th class="w-1/3 md:w-1/5 pb-5"></th>
             <th class="w-1/3 md:w-1/5 pb-5"></th>
             @else
@@ -67,7 +67,7 @@
                 <td class="w-1/3 md:w-1/5 text-center pb-3">{{$shop->shop_name}}</td>
                 <td class="w-1/5 text-center hidden md:table-cell pb-3">{{$shop->erea->erea_name}}</td>
                 <td class="w-1/5 text-center hidden md:table-cell pb-3">{{$shop->genre->genre_name}}</td>
-                @if(Request::is('owner/shops'))
+                @if(Auth::user()->role == 2)
                 <td class="w-1/3 md:w-1/5 text-center pb-3">
                     <form action="/owner/shop/reservation" method="POST">
                         @csrf

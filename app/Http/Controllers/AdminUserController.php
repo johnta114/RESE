@@ -11,7 +11,7 @@ class AdminUserController extends Controller
     public function users(Request $request)
     {
         $users =  User::where('role','<=',2)->get();
-        return view('admin-users',['users' => $users]);
+        return view('users',['users' => $users]);
     }
 
     // 検索
@@ -30,6 +30,6 @@ class AdminUserController extends Controller
             $users = User::where('role','<=',2)->where('name', 'LIKE',"%{$search1}%")->where('role', $search3)->where('email','LIKE',"%$search2%")->get();
         }
 
-        return view('admin-users',['users' => $users]);
+        return view('users',['users' => $users]);
     }
 }

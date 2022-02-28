@@ -20,7 +20,7 @@ class OwnerShopDitailController extends Controller
             'genres' => $genres,
             'shop' => $shop,
         ];
-        return view('owner-shop-ditail',$items);
+        return view('shop-ditail',$items);
     }
     // 店舗情報更新
     public function update(Request $request)
@@ -37,7 +37,7 @@ class OwnerShopDitailController extends Controller
             'genres' => $genres,
             'shop' => $shop,
         ];
-        return view('owner-shop-ditail',$items);
+        return view('shop-ditail',$items);
     }
     // ユーザー削除
     public function delete(Request $request){
@@ -45,6 +45,6 @@ class OwnerShopDitailController extends Controller
         $delete -> delete();
 
         $shops =  Shop::where('user_id',Auth::user()->id)->get();
-        return view('owner-shops',['shops' => $shops]);
+        return view('shops',['shops' => $shops]);
     }
 }

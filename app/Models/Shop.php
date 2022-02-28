@@ -41,7 +41,7 @@ class Shop extends Model
         return $this->hasMany('App\Models\Review');
     }
 
-// お気に入り状況の確認
+    // お気に入り状況の確認
     public function is_favorited_by_auth_user()
     {
         $id = Auth::id();
@@ -57,5 +57,20 @@ class Shop extends Model
             return false;
         }
     }
+    // レビュー状況の確認
+    public function is_reviewed_by_auth_user()
+    {
+        $id = Auth::id();
 
+        $reviews = array();
+        foreach($this->reviews as $review) {
+            array_push($reviews, $review->user_id);
+        }
+
+        if (in_array($id, $reviews)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

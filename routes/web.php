@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DitailController;
 use App\Http\Controllers\DoneController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminController;
@@ -37,7 +38,7 @@ Route::post('/like', [HomeController::class ,'like'] )->middleware(['auth','veri
 Route::post('/unlike', [HomeController::class ,'unlike'] )->middleware(['auth','verified']);
 
 // ThanksController
-Route::get('/thanks', [thanksController::class ,'thanks'] )->middleware(['verified'])->name('thanks');
+Route::get('/thanks', [ThanksController::class ,'thanks'] )->middleware(['verified'])->name('thanks');
 
 // DitailController
 Route::get('/ditail/{shop_id}', [DitailController::class ,'ditail'] );
@@ -48,7 +49,11 @@ Route::post('/done', [DoneController::class ,'done'] )->middleware(['auth','veri
 // MypageController
 Route::post('/mypage',[MypageController::class,'mypage'])->middleware(['auth','verified']);
 Route::post('/mypage/unlike', [MypageController::class ,'unlike'])->middleware(['auth','verified']);
-Route::post('/delete', [MypageController::class ,'reservationDelete'] )->middleware(['auth','verified']);
+Route::post('/mypage/delete', [MypageController::class ,'reservationDelete'] )->middleware(['auth','verified']);
+
+// ReviewController
+Route::post('/review',[ReviewController::class,'review'])->middleware(['auth','verified']);
+Route::post('/review/done',[ReviewController::class,'done'])->middleware(['auth','verified']);
 
 // ReservationController
 Route::post('/reservation', [ReservationController::class ,'reservation'] );
@@ -85,12 +90,6 @@ Route::post('/owner/shop/delete', [OwnerShopDitailController::class ,'delete'] )
 // UserMailController
 Route::post('/mail', [UserMailController::class ,'mail'] )->middleware(['auth','can:isAdmin']);
 Route::post('/mail/send', [UserMailController::class ,'send'] )->middleware(['auth','can:isAdmin']);
-
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['isOwner'])->name('dashboard');
 
 
 require __DIR__.'/auth.php';

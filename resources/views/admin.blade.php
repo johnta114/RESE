@@ -16,7 +16,7 @@
         <li>
             <form action="/admin/shops" method="POST">
                 @csrf
-                <button class="border-b border-solid border-transparent hover:border-black" type="submit">ショップ一覧</button>
+                <button class="border-b border-solid border-transparent hover:border-black" type="submit">店舗一覧</button>
             </form>
         </li>
         <li>

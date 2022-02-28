@@ -50,6 +50,6 @@ class OwnerShopRegisterController extends Controller
             'shops' => $shops,
         ];
 
-        return view('owner-shops',$items);
+        return view('shops',$items);
     }
 }

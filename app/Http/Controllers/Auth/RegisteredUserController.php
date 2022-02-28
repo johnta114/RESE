@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
                 'role' => $request->role,
             ]);
             $users =  User::where('role','<=',2)->get();
-            return view('admin-users',['users' => $users]);
+            return view('users',['users' => $users]);
         }else{
             $user = User::create([
                 'name' => $request->first_name.' '.$request->last_name,

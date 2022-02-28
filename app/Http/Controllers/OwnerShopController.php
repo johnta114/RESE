@@ -22,7 +22,7 @@ class OwnerShopController extends Controller
             'genres' => $genres,
             'shops' => $shops,
         ];
-        return view('owner-shops',$items);
+        return view('shops',$items);
     }
 
     public function search(Request $request){
@@ -50,6 +50,6 @@ class OwnerShopController extends Controller
             'shops' => $shops,
         ];
 
-        return view('owner-shops',$items);
+        return view('shops',$items);
     }
 }

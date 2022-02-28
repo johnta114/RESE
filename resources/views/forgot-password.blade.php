@@ -24,7 +24,5 @@
             <button class="w-full md:w-2/3 text-base bg-orange-400 text-white hover:opacity-80 cursor-pointer rounded-md py-2 px-5" >送信</button>
         </div>
     </form>
-
 </div>
-
 @endsection

@@ -12,19 +12,19 @@
         <div  class="flex justify-start items-center gap-5 mb-6">
             <div class="text-base text-black font-normal mr-10">宛先</div>
             <div class="flex items-center">
-                <input id="user-option-1" type="radio" name="address" value="all" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:border-gray-600" aria-labelledby="user-option-1" aria-describedby="user-option-1" checked="">
+                <input id="user-option-1" type="radio" name="address" value="all" class="w-4 h-4 border-gray-300" checked="">
                 <label for="user-option-1" class="block ml-2 text-sm font-medium text-gray-900 dark:text-black">
                     全ユーザー
                 </label>
             </div>
             <div class="flex items-center">
-                <input id="user-option-2" type="radio" name="address" value="owner" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:border-gray-600" aria-labelledby="user-option-2" aria-describedby="user-option-2">
+                <input id="user-option-2" type="radio" name="address" value="owner" class="w-4 h-4 border-gray-300">
                 <label for="user-option-2" class="block ml-2 text-sm font-medium text-gray-900 dark:black">
                     全店舗責任者
                 </label>
             </div>
             <div class="flex items-center">
-                <input id="user-option-3" type="radio" name="address" value="user" class="w-4 h-4 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:border-gray-600" aria-labelledby="user-option-3" aria-describedby="user-option-3">
+                <input id="user-option-3" type="radio" name="address" value="user" class="w-4 h-4">
                 <label for="user-option-3" class="block ml-2 text-sm font-medium text-gray-900 dark:text-black">
                     全利用者
             </label>
@@ -36,10 +36,10 @@
         </div>
         <div>
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">本文</label>
-            <textarea id="message" name="message" cols="200" rows="10" class="block p-2.5 mb-6 w-full text-sm text-gray-900 rounded-lg border border-black focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="本文">{{old('message')}}</textarea>
+            <textarea id="message" name="message" cols="200" rows="10" class="block p-2.5 mb-6 w-full text-sm text-gray-900 rounded-lg border border-black" placeholder="本文">{{old('message')}}</textarea>
         </div>
         <div class="flex justify-center">
-            <button class="appearance-none outline-none py-2 px-6 w-full md:w-1/2 rounded-b md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">送信</button>
+            <button class="appearance-none outline-none py-2 px-6 w-full md:w-1/2 rounded md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">送信</button>
         </div>
     </form>
 </div>

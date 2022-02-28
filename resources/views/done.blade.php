@@ -7,8 +7,12 @@
 @section('content')
     <div class="w-full md:w-96 h-60 rounded bg-white shadow-lg shadow-gray m-auto flex justify-center items-center">
         <div class="text-center w-full p-2">
+        @if(Request::is('review/done'))
+        <p class="text-base mb-3">レビューを受け付けました。</p>
+        @else
             <p class="text-base mb-3">予約ありがとうございます。</p>
             <p class="text-base mb-3">詳細はマイページにてご確認ください。</p>
+        @endif
             <form method="POST" action="/mypage">
                 @csrf
                     <div>

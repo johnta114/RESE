@@ -10,7 +10,7 @@ class AdminUserDitailController extends Controller
     public function ditail(Request $request)
     {
         $user =  User::where('id',$request->user_id)->first();
-        return view('admin-user-ditail',['user' => $user]);
+        return view('user-ditail',['user' => $user]);
     }
     // ユーザー情報更新
     public function update(Request $request)
@@ -20,7 +20,7 @@ class AdminUserDitailController extends Controller
         User::where('id',$request->id)->update($update);
 
         $user = User::where('id', $request->id)->first();
-        return view('admin-user-ditail',['user' => $user]);
+        return view('user-ditail',['user' => $user]);
     }
     // ユーザー削除
     public function delete(Request $request){
@@ -28,6 +28,6 @@ class AdminUserDitailController extends Controller
         $delete -> delete();
 
         $users =  User::all();
-        return view('admin-users',['users' => $users]);
+        return view('users',['users' => $users]);
     }
 }

@@ -22,5 +22,5 @@ class Review extends Model
     public function shop(){
         return $this->belongsTo('App\Models\shop');
     }
-    
+
 }

@@ -21,7 +21,7 @@ class AdminShopController extends Controller
             'genres' => $genres,
             'shops' => $shops,
         ];
-        return view('owner-shops',$items);
+        return view('shops',$items);
     }
     // 検索
     public function search(Request $request){
@@ -49,6 +49,6 @@ class AdminShopController extends Controller
             'shops' => $shops,
         ];
 
-        return view('owner-shops',$items);
+        return view('shops',$items);
     }
 }

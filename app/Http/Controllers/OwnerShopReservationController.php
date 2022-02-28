@@ -22,7 +22,7 @@ class OwnerShopReservationController extends Controller
             'shop' => $shop,
         ];
 
-        return view('owner-shop-reservation',$items);
+        return view('shop-reservation',$items);
     }
     public function visit(Request $request)
     {
@@ -43,6 +43,6 @@ class OwnerShopReservationController extends Controller
             'shop' => $shop,
         ];
 
-        return view('owner-shop-reservation',$items);
+        return view('shop-reservation',$items);
     }
 }

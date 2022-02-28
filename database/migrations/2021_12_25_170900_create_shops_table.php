@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->string('shop_name',191);
             $table->text('overview');
-            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade')->default('')->nullable();
             $table->foreignId('erea_id')->references('id')->on('ereas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('genre_id')->references('id')->on('genres')->onUpdate('cascade')->onDelete('cascade');
             $table->string('image',191);

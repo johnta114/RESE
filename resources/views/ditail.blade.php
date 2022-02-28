@@ -10,7 +10,7 @@
     <div class="w-full mb-10">
         <h2 class="text-3xl font-bold mb-5">{{$shop->shop_name}}</h2>
         <div class="w-ful mb-5">
-            <img class="w-full" src="{{$shop->image}}" alt="店舗画像">
+            <img class="w-full" src="{{ asset('/' .$shop->image ) }}" alt="店舗画像">
         </div>
         <div class="flex items-center mb-5">
             <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">場所</div>
@@ -29,7 +29,7 @@
             <!-- datepicker -->
             <div class="flex items-center justify-center w-full">
                 <div class="mb-3 w-full md:w-3/4">
-                    <input type="text" name="reservation_date" required  class="datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black cursor-pointer" placeholder="来店日"/>
+                    <input type="text" name="reservation_date" required  class="datepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition  placeholder-black cursor-pointer" placeholder="来店日"/>
                     @error('reservation_date')
                     <div class="text-red-500 text-sm">{{$message}}</div>
                     @enderror
@@ -38,7 +38,7 @@
             <!-- timepicker -->
             <div class="flex justify-center w-full">
                 <div class="mb-3 w-full md:w-3/4">
-                    <input type="text"  name="reservation_time" required class="timepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-black cursor-pointer" placeholder="来店時間"/>
+                    <input type="text"  name="reservation_time" required class="timepicker form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition placeholder-black cursor-pointer" placeholder="来店時間"/>
                     @error('reservation_time')
                     <div class="text-red-500 text-sm">{{$message}}</div>
                     @enderror
@@ -46,7 +46,7 @@
             </div>
             <div class="flex justify-center w-full">
                 <div class="mb-5 w-full md:w-3/4">
-                    <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer" aria-label="Default select example" name="number_people" required>
+                    <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded cursor-pointer" aria-label="Default select example" name="number_people" required>
                         <option hidden selected >来店人数</option>
                         <option value="1">1人</option>
                         <option value="2">2人</option>
