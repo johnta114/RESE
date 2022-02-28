@@ -28,7 +28,7 @@
                         <button class="py-1 px-2 rounded md:rounded bg-orange-400 text-white hover:opacity-80 cursor-pointer" type="submit">来店</button>
                     </form>
                     @else
-                    {{$reservation->visited_at}}
+                    {{substr($reservation->visited_at, 0, 16)}}
                     @endif
                 </td>
             </tr>

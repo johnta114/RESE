@@ -28,8 +28,8 @@ class OwnerShopRegisterController extends Controller
 
         $post_data = $request->except('imagefile');
         $imagefile = $request->file('imagefile');
-        $temp_path = $imagefile->store('public/temp');
-        $read_temp_path = str_replace('public/', 'storage/', $temp_path);
+        $path = $imagefile->store('public');
+        $read_path = str_replace('public', 'storage', $path);
 
         $shop = Shop::create([
             'shop_name' => $request->shop_name,
@@ -37,7 +37,7 @@ class OwnerShopRegisterController extends Controller
             'erea_id' => $request->erea_id,
             'genre_id' => $request->genre_id,
             'overview' => $request->overview,
-            'image' => $read_temp_path,
+            'image' => $read_path,
         ]);
 
         $shops =  Shop::where('user_id',Auth::user()->id)->get();
