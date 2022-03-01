@@ -7,6 +7,7 @@ use App\Models\Erea;
 use App\Models\Genre;
 use Auth;
 use App\Models\Shop;
+use Storage;
 
 class OwnerShopRegisterController extends Controller
 {
@@ -26,10 +27,13 @@ class OwnerShopRegisterController extends Controller
     public function store(Request $request)
     {
 
-        $post_data = $request->except('imagefile');
-        $imagefile = $request->file('imagefile');
-        $path = $imagefile->store('public');
-        $read_path = str_replace('public', 'storage', $path);
+        $form = $request->all();
+  
+        //s3アップロード開始
+        $image = $request->file('imagefile');
+        // バケットの`myprefix`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('/', $image, 'public');
+
 
         $shop = Shop::create([
             'shop_name' => $request->shop_name,
@@ -37,7 +41,8 @@ class OwnerShopRegisterController extends Controller
             'erea_id' => $request->erea_id,
             'genre_id' => $request->genre_id,
             'overview' => $request->overview,
-            'image' => $read_path,
+             // アップロードした画像のフルパスを取得
+            'image' => Storage::disk('s3')->url($path),
         ]);
 
         $shops =  Shop::where('user_id',Auth::user()->id)->get();

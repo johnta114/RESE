@@ -10,7 +10,7 @@
     <div class="w-full mb-10">
         <h2 class="text-3xl font-bold mb-5">{{$shop->shop_name}}</h2>
         <div class="w-ful mb-5">
-            <img class="w-full" src="{{ asset('/' .$shop->image ) }}" alt="店舗画像">
+            <img class="w-full" src="{{$shop->image}}" alt="店舗画像">
         </div>
         <div class="flex items-center mb-5">
             <div class="pr-3 mr-2 relative z-0 after:content-[':'] after:absolute after:top-0 after:right-0">場所</div>

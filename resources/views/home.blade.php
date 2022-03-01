@@ -45,7 +45,7 @@
     <div class="card w-full md:w-11/12 py-5 md:px-8 mx-auto border-t border-solid border-gray-400 md:flex md:justify-start md:items-center md:gap-20">
         <div class="card-img w-ful md:w-96">
             <a class="w-full" href="https://fierce-bayou-22150.herokuapp.com/ditail/{{{$shop->id}}}">
-                <img class="w-full  hover:opacity-80 cursor-pointer" src="{{ asset('/' .$shop->image) }}" alt="お店の画像">
+                <img class="w-full  hover:opacity-80 cursor-pointer" src="{{$shop->image}}" alt="お店の画像">
             </a>
         </div>
         <div class="card-contents w-full md:w-[calc(100% - 150rem)]">

@@ -34,7 +34,7 @@
                 <div>
                     <div>画像</div>
                     <div class="w-full md:w-2/3 mb-5 mx-auto">
-                        <img src="{{ asset('/' .$shop->image ) }}">
+                        <img src="{{$shop->image}}">
                     </div>
                 </div>
                 <div class="mb-6 flex justify-start items-start gap-5">
