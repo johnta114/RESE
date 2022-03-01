@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
             EreasTableSeeder::class,
             GenresTableSeeder::class,
             UsersTableSeeder::class,
-            ShopsTableSeeder::class,
-            // ShopsHerokuTableSeeder::class,
+            // ShopsTableSeeder::class,
+            ShopsHerokuTableSeeder::class,
         ]);
     }
 }
