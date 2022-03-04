@@ -5,13 +5,13 @@
 @section('content')
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form method="POST" action="/login">
             @csrf
             <div class="mx-auto md:w-2/3 rounded bg-white shadow-lg shadow-gray flex justify-center items-center">
                 <div class="w-10/12 mx-auto">
-                <h2 class="text-lg text-center py-4">ログイン</h2>
+                    <h2 class="text-lg text-center py-4">ログイン</h2>
+                    <!-- Validation Errors -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 <!-- メールアドレス -->
                 <div class="relative z-0 mb-6 w-full group">
                     <input type="email" name="email" value="{{old('email')}}" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
