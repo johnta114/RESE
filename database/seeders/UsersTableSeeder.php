@@ -12,14 +12,14 @@ class UsersTableSeeder extends Seeder
         'name' => 'admin',
         'email' => 'syota.u1104@gmail.com',
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-        'role' => 4,
+        'role' => 1,
         'remember_token' => 'fnuaAu35nt'
         ],
         [
         'name' => 'test',
         'email' => 'test@gmail.com',
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-        'role' => 14,
+        'role' => 2,
         'remember_token' => 'AnuaAu35nt'
         ],
 ];

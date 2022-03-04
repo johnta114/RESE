@@ -15,10 +15,15 @@ class OwnerShopReservationController extends Controller
             ->orderBy('reservation_date', 'asc')
             ->orderBy('reservation_time', 'asc')
             ->get();
+        $reservationsExists = Reservation::where('shop_id',$request->shop_id)
+        ->orderBy('reservation_date', 'asc')
+        ->orderBy('reservation_time', 'asc')
+        ->exists();
         $shop = Shop::selectRaw('shop_name')->where('id',$request->shop_id);
 
         $items =[
             'reservations' => $reservations,
+            'reservationsExists' => $reservationsExists,
             'shop' => $shop,
         ];
 
@@ -34,12 +39,15 @@ class OwnerShopReservationController extends Controller
             ->orderBy('reservation_date', 'asc')
             ->orderBy('reservation_time', 'asc')
             ->get();
-
+        $reservationsExists = Reservation::where('shop_id',$request->shop_id)
+            ->orderBy('reservation_date', 'asc')
+            ->orderBy('reservation_time', 'asc')
+            ->exists();
         $shop = Shop::selectRaw('shop_name')->where('id',$request->shop_id);
-        // dd($shop);
 
         $items =[
             'reservations' => $reservations,
+            'reservationsExists' => $reservationsExists,
             'shop' => $shop,
         ];
 

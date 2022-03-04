@@ -50,7 +50,7 @@
                 </div>
                 <div class="w-full flex justify-start items-center gap-10 text-base text-black font-normal">
                     <div class="ml-3">人数</div>
-                    <div>{{$reservation->number_people}}</div>
+                    <div>{{$reservation->number_people}}人</div>
                 </div>
             </div>
             <div class="text-right">

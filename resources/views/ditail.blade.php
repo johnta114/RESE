@@ -57,6 +57,9 @@
                         <option value="7">7人</option>
                         <option value="8">8人</option>
                     </select>
+                    @error('number-people')
+                        <div class="text-red-500 text-sm">{{$message}}</div>
+                    @enderror
                 </div>
             </div>
             @csrf

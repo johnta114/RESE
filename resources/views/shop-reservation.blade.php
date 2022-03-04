@@ -3,8 +3,12 @@
 
 
 @section('content')
-<div class="">
 </div>
+    @if(!$reservationsExists)
+        <div class="texy-center mb-5">
+            <h3 class="text-lg text-orange-400 font-normal text-center">現在、予約がありません。</h3>
+        </div>
+    @endif
     <table class="w-full text-base text-black font-normal table-fixed">
         <tr class="w-full">
             <th class="w-1/3 md:w-1/5 pb-5">日付</th>
