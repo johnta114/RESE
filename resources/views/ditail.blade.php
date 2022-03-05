@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="w-full justify-center items-center gap-12 md:flex">
+<div class="w-full justify-center items-center gap-12 md:flex mb-10">
     <!-- 店舗情報 -->
     <div class="w-full mb-10">
         <h2 class="text-3xl font-bold mb-5">{{$shop->shop_name}}</h2>
@@ -66,6 +66,59 @@
             <button type="submit" class="w-full md:w-2/3 px-6 py-2 mb-4 bg-orange-400 text-white text-xl rounded cursor-pointer hover:opacity-80">予約する</button>
         </form>
     </div>
+</div>
+<!-- レビュー -->
+<div class="w-full md:w-1/2">
+    <h2 class="text-center md:text-left text-3xl font-bold mb-5">レビュー</h2>
+    @if(!$reviewsExits)
+        <div class="texy-center">
+            <h3 class="text-lg text-orange-400 font-normal text-center">レビューがありません。</h3>
+        </div>
+    @endif
+    @foreach ($reviews as $review)
+    <div class="w-full p-2 border-t border-solid border-black">
+        <div class="w-full mb-2">
+            @if($review->star == 5)
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+            @elseif($review->star == 4)
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+            @elseif($review->star == 3)
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+            @elseif($review->star == 2)
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+            @elseif($review->star == 1)
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+            @else
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+                <i class="fas fa-star text-gray-400"></i>
+            @endif
+        </div>
+        <div class="w-full line-clamp-2">{{$review->comment}}</div>
+    </div>
+    @endforeach
 </div>
 <script src="{{ asset('/js/datetime.js') }}"></script>
 @endsection
